@@ -1,0 +1,21 @@
+{
+    "name": "MathRunner.Game",
+    "rootNamespace": "MathRunner.Game",
+    "references": [
+        "MathRunner.Core",
+        "ITKamianets.Engine.Core",
+        "ITKamianets.Engine.Input",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro",
+        "UnityEngine.UI"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

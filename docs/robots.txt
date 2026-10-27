@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://math-runner.itkamianets.com/sitemap.xml

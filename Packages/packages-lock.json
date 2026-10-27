@@ -1,5 +1,116 @@
 {
   "dependencies": {
+    "com.coplaydev.unity-mcp": {
+      "version": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.modules.animation": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.physics2d": "1.0.0",
+        "com.unity.modules.uielements": "1.0.0",
+        "com.unity.modules.screencapture": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.nuget.newtonsoft-json": "3.0.2",
+        "com.unity.test-framework": "1.1.31"
+      },
+      "hash": "81542a7e86292b5c4c21b1782c5af23b567f45ce"
+    },
+    "com.itkamianets.3d-constructor-character-view-camera": {
+      "version": "https://github.com/IT-Kamianets/3d-constructor-character-view-camera.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.itkamianets.3d-unity-core": "0.1.0",
+        "com.itkamianets.3d-unity-input": "0.1.0",
+        "com.itkamianets.3d-unity-character": "0.1.0",
+        "com.unity.modules.physics": "1.0.0"
+      },
+      "hash": "dbbd9e72e5aefb01b53019c91c7cfe1f2ee3facb"
+    },
+    "com.itkamianets.3d-constructor-character-view-controls": {
+      "version": "https://github.com/IT-Kamianets/3d-constructor-character-view-controls.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.itkamianets.3d-unity-core": "0.1.0",
+        "com.itkamianets.3d-unity-input": "0.1.0",
+        "com.itkamianets.3d-unity-character": "0.1.0",
+        "com.itkamianets.3d-constructor-character-view-camera": "0.1.0"
+      },
+      "hash": "51ca9abf707f796748c684b83336e1be9bcb4d8d"
+    },
+    "com.itkamianets.3d-unity-assets": {
+      "version": "https://github.com/IT-Kamianets/3d-unity-assets.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.itkamianets.3d-unity-core": "0.1.0",
+        "com.itkamianets.3d-unity-scene": "0.1.0",
+        "com.unity.nuget.newtonsoft-json": "3.2.2",
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.modules.unitywebrequesttexture": "1.0.0",
+        "com.unity.modules.unitywebrequestaudio": "1.0.0",
+        "com.unity.modules.audio": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0"
+      },
+      "hash": "bfd1d60bf25252a4e24c1378e19d89c1909e0091"
+    },
+    "com.itkamianets.3d-unity-audio": {
+      "version": "https://github.com/IT-Kamianets/3d-unity-audio.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.itkamianets.3d-unity-core": "0.1.0",
+        "com.itkamianets.3d-unity-scene": "0.1.0",
+        "com.itkamianets.3d-unity-assets": "0.1.0",
+        "com.itkamianets.3d-unity-character": "0.1.0",
+        "com.unity.modules.audio": "1.0.0"
+      },
+      "hash": "9863267c3fbb3de0a323478debdca015f6a8f32c"
+    },
+    "com.itkamianets.3d-unity-character": {
+      "version": "https://github.com/IT-Kamianets/3d-unity-character.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.itkamianets.3d-unity-core": "0.1.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.animation": "1.0.0"
+      },
+      "hash": "d7a3f6bd49e72549b6a4457aca9d52bfbff01c6b"
+    },
+    "com.itkamianets.3d-unity-core": {
+      "version": "https://github.com/IT-Kamianets/3d-unity-core.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d4d8f944759ae32d7ee2a3111aa1904c3f53a06a"
+    },
+    "com.itkamianets.3d-unity-input": {
+      "version": "https://github.com/IT-Kamianets/3d-unity-input.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.itkamianets.3d-unity-core": "0.1.0",
+        "com.unity.inputsystem": "1.20.0",
+        "com.unity.ugui": "2.6.0",
+        "com.unity.modules.xr": "1.0.0"
+      },
+      "hash": "b380862568245c3389881c9af0105b0fc6207734"
+    },
+    "com.itkamianets.3d-unity-scene": {
+      "version": "https://github.com/IT-Kamianets/3d-unity-scene.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.itkamianets.3d-unity-core": "0.1.0",
+        "com.unity.nuget.newtonsoft-json": "3.2.2",
+        "com.unity.modules.physics": "1.0.0"
+      },
+      "hash": "e805fa6189e5313be26e0390bc07849f05dd709e"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.15",
       "depth": 0,
@@ -68,6 +179,13 @@
     "com.unity.nuget.mono-cecil": {
       "version": "1.11.6",
       "depth": 3,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.nuget.newtonsoft-json": {
+      "version": "3.2.2",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

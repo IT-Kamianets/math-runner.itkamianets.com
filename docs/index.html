@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Math Runner: a 3D endless runner where every gate is a math question</title>
+<meta name="description" content="Run down a city street and pick the right answer by choosing a lane. Four levels from addition to division, with lives, streaks and power-ups.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#1e66ff">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://math-runner.itkamianets.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231e66ff'/%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial,sans-serif' font-size='34' font-weight='900' text-anchor='middle' fill='%23ffffff'%3E%2B%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Math Runner">
+<meta property="og:title" content="Math Runner: run to the right answer">
+<meta property="og:description" content="A 3D street runner where every gate is a math question. Steer into the lane with the correct answer.">
+<meta property="og:url" content="https://math-runner.itkamianets.com/">
+<meta property="og:image" content="https://math-runner.itkamianets.com/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Math Runner: the question 12 + 15 above three answer boards, 15, 27 and 13, with the runner approaching.">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Math Runner: run to the right answer">
+<meta name="twitter:description" content="A 3D street runner where every gate is a math question. Steer into the lane with the correct answer.">
+<meta name="twitter:image" content="https://math-runner.itkamianets.com/og-image.png">
+<meta name="twitter:image:alt" content="Math Runner: the question 12 + 15 above three answer boards, 15, 27 and 13, with the runner approaching.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Math Runner",
+  "url": "https://math-runner.itkamianets.com/",
+  "image": "https://math-runner.itkamianets.com/og-image.png",
+  "description": "A 3D endless runner where every gate is a math question. Steer into the lane with the correct answer.",
+  "genre": ["Endless runner", "Educational"],
+  "gamePlatform": "Windows",
+  "operatingSystem": "Windows 10, Windows 11",
+  "downloadUrl": "https://github.com/IT-Kamianets/math-runner.itkamianets.com/releases/latest/download/MathRunner-Setup.exe",
+  "applicationCategory": "Game",
+  "inLanguage": "en",
+  "sameAs": "https://github.com/IT-Kamianets/math-runner.itkamianets.com",
+  "publisher": {
+    "@type": "Organization",
+    "name": "IT Kamianets",
+    "url": "https://itkamianets.com"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="ds.css">
+<style>
+  /* Layout only. Components, colour, type and material come from ds.css. */
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+  body { margin: 0; font-family: var(--font-sans, Inter, system-ui, sans-serif); }
+  .wrap { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: 24px; }
+  .icon { width: 1.25em; height: 1.25em; flex: none; }
+  .icon-lg { width: 28px; height: 28px; }
+
+  /* Header */
+  .site-header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--background) 90%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; }
+  .brand { display: inline-flex; align-items: center; min-height: 44px; font-weight: 800; font-size: 1.125rem; letter-spacing: -0.02em; color: var(--foreground) !important; }
+  .nav { display: flex; align-items: center; gap: 4px; }
+  .nav a:not(.ds-btn) { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 12px; font-weight: 500; font-size: .9375rem; color: var(--muted-foreground); border-radius: 10px; }
+
+  /* Hero */
+  .hero { padding-block: 64px 80px; }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 56px; align-items: center; }
+  .hero h1 { margin: 0; font-size: clamp(2.5rem, 5.4vw, 4rem); line-height: 1.02; text-wrap: balance; }
+  .ds .lede { margin: 20px 0 0; max-width: 32rem; font-size: 1.1875rem; line-height: 1.55; }
+  .actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+  /* Game illustration */
+  .scene { position: relative; aspect-ratio: 4 / 3.2; overflow: hidden; border-radius: var(--radius-2xl, 1rem); border: 1px solid var(--border); box-shadow: var(--shadow-lg);
+    background: linear-gradient(180deg, #8fd3ff 0%, #d6efff 36%, #b8a79f 36%, #94776d 100%); }
+  .scene .bld { position: absolute; top: 12%; height: 46%; border-radius: 6px; }
+  .scene .bld.l { left: 3%; width: 13%; background: linear-gradient(180deg, #e5484d, #b3262b); transform: skewY(7deg); }
+  .scene .bld.l2 { left: 17%; width: 9%; top: 22%; height: 36%; background: linear-gradient(180deg, #f5b942, #d58f12); transform: skewY(5deg); }
+  .scene .bld.r { right: 3%; width: 13%; background: linear-gradient(180deg, #1fa5a8, #0f7478); transform: skewY(-7deg); }
+  .scene .bld.r2 { right: 17%; width: 9%; top: 22%; height: 36%; background: linear-gradient(180deg, #8a6df0, #5b3fc9); transform: skewY(-5deg); }
+  .scene .lane { position: absolute; top: 36%; bottom: 0; width: 3px; background: rgba(255,255,255,.55); }
+  .scene .lane.a { left: 36%; transform: skewX(-9deg); }
+  .scene .lane.b { left: 64%; transform: skewX(9deg); }
+  .scene .q { position: absolute; top: 8%; left: 50%; transform: translateX(-50%); white-space: nowrap; font-weight: 900; font-size: clamp(1.75rem, 4.6vw, 3rem); color: #ffcf33; -webkit-text-stroke: 2px #4a2b00; paint-order: stroke fill; }
+  .scene .boards { position: absolute; left: 22%; right: 22%; top: 30%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5%; }
+  .scene .board { display: grid; place-items: center; aspect-ratio: 1 / .8; border-radius: 10px; background: #19d3ef; color: #fff; font-weight: 900; font-size: clamp(1.1rem, 3.2vw, 2.1rem); -webkit-text-stroke: 1.5px #0a4a57; paint-order: stroke fill; box-shadow: 0 5px 0 #0f93a8; }
+  .scene .runner { position: absolute; left: 50%; bottom: 6%; transform: translateX(-50%); width: 12%; aspect-ratio: 1 / 2; }
+  .runner .head { position: absolute; top: 0; left: 16%; width: 68%; aspect-ratio: 1; border-radius: 50%; background: #7a5a3a; }
+  .runner .body { position: absolute; top: 36%; left: 8%; width: 84%; height: 34%; border-radius: 12px 12px 6px 6px; background: #8a8f98; }
+  .runner .legs { position: absolute; top: 66%; left: 16%; width: 68%; height: 34%; border-radius: 4px 4px 10px 10px; background: #2f4f82; }
+
+  /* Sections */
+  .section { padding-block: 80px; }
+  .section.tint { background: var(--muted); border-block: 1px solid var(--border); }
+  .section h2 { margin: 0; font-size: clamp(1.75rem, 3.2vw, 2.25rem); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance; }
+  .section .sub { margin: 12px 0 0; max-width: 34rem; font-size: 1.0625rem; }
+  .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; align-items: start; }
+  .split.even { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
+  .stack { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+
+  /* Steps */
+  .step { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 18px; padding: 22px 24px; align-items: start; }
+  .step .num { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; font-weight: 800; font-size: 1.25rem; background: var(--accent); color: var(--accent-foreground); }
+  .step h3 { margin: 2px 0 4px; font-size: 1.1875rem; }
+  .step p { margin: 0; }
+
+  /* The kit's material layer resets every badge to the dark base fill and wins the cascade,
+     so the semantic variants are restored here with the kit's own values. */
+  .ds .ds-badge-safe { background-color: oklch(0.92 0.06 150); color: oklch(0.38 0.11 152); }
+  .ds .ds-badge-danger { background-color: var(--destructive); color: var(--destructive-foreground); }
+  .ds .ds-badge-unknown { background-color: oklch(0.9 0.085 92); color: oklch(0.38 0.09 75); }
+  .ds .ds-badge { padding: .2rem .7rem; font-size: .75rem; line-height: 1.4; justify-self: start; }
+
+  /* Rule rows */
+  .row { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; align-items: center; padding: 16px 24px; border-top: 1px solid var(--border); }
+  .row:first-child { border-top: 0; }
+  .row p { margin: 0; }
+  .lives { display: flex; align-items: center; gap: 8px; padding: 22px 24px; }
+  .lives .icon { width: 32px; height: 32px; color: var(--destructive); }
+  .lives p { margin: 0 0 0 8px; }
+
+  /* Table and controls */
+  .tbl { overflow-x: auto; }
+  .ds-table { min-width: 420px; font-size: .9375rem; }
+  .ds-table th, .ds-table td { padding: 14px 20px; }
+  .ds-table td:first-child { font-weight: 600; }
+  .ctl { display: grid; grid-template-columns: minmax(0, 8rem) minmax(0, 1fr); gap: 16px; align-items: center; padding: 18px 24px; border-top: 1px solid var(--border); }
+  .ctl:first-child { border-top: 0; }
+  .ctl h3 { margin: 0; font-size: 1.0625rem; }
+  .ctl p { margin: 0; }
+  .keys { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 4px; }
+
+  /* Downloads */
+  .dl { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 18px 24px; border-top: 1px solid var(--border); }
+  .dl:first-child { border-top: 0; }
+  .dl .icon { width: 36px; height: 36px; color: var(--primary); }
+  .dl h3 { margin: 0; font-size: 1.125rem; }
+  .dl p { margin: 0; }
+  .ds .note { margin: 20px 0 0; }
+
+  .site-footer { border-top: 1px solid var(--border); padding-block: 28px; }
+  .site-footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; }
+  .site-footer p { margin: 0; }
+  .site-footer ul { display: flex; flex-wrap: wrap; gap: 0 20px; list-style: none; margin: 0; padding: 0; }
+  .site-footer a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+
+  @media (max-width: 860px) {
+    .hero { padding-block: 36px 56px; }
+    .hero .wrap, .split, .split.even { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .section { padding-block: 56px; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding-inline: 16px; }
+    .nav a:not(.ds-btn) { display: none; }
+    .actions .ds-btn { width: 100%; }
+    .row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    .ctl { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+    .dl { grid-template-columns: 36px minmax(0, 1fr); }
+    .dl .ds-btn { grid-column: 1 / -1; width: 100%; }
+    .step { grid-template-columns: 40px minmax(0, 1fr); padding: 18px; }
+    .step .num { width: 40px; height: 40px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body class="ds">
+
+<!-- Phosphor duotone icons (ph), inlined from the design system's icon library -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-heart" viewBox="0 0 256 256"><g fill="currentColor"><path d="M232 102c0 66-104 122-104 122S24 168 24 102a54 54 0 0 1 54-54c22.59 0 41.94 12.31 50 32c8.06-19.69 27.41-32 50-32a54 54 0 0 1 54 54" opacity=".2"/><path d="M178 40c-20.65 0-38.73 8.88-50 23.89C116.73 48.88 98.65 40 78 40a62.07 62.07 0 0 0-62 62c0 70 103.79 126.66 108.21 129a8 8 0 0 0 7.58 0C136.21 228.66 240 172 240 102a62.07 62.07 0 0 0-62-62m-50 174.8c-18.26-10.64-96-59.11-96-112.8a46.06 46.06 0 0 1 46-46c19.45 0 35.78 10.36 42.6 27a8 8 0 0 0 14.8 0c6.82-16.67 23.15-27 42.6-27a46.06 46.06 0 0 1 46 46c0 53.61-77.76 102.15-96 112.8"/></g></symbol>
+  <symbol id="i-coins" viewBox="0 0 256 256"><g fill="currentColor"><path d="M240 132c0 19.88-35.82 36-80 36c-19.6 0-37.56-3.17-51.47-8.44C146.76 156.85 176 142 176 124V96.72c36.52 3.34 64 17.86 64 35.28m-64-48c0-19.88-35.82-36-80-36S16 64.12 16 84s35.82 36 80 36s80-16.12 80-36" opacity=".2"/><path d="M184 89.57V84c0-25.08-37.83-44-88-44S8 58.92 8 84v40c0 20.89 26.25 37.49 64 42.46V172c0 25.08 37.83 44 88 44s88-18.92 88-44v-40c0-20.7-25.42-37.32-64-42.43M232 132c0 13.22-30.79 28-72 28c-3.73 0-7.43-.13-11.08-.37C170.49 151.77 184 139 184 124v-18.26c29.87 4.45 48 16.53 48 26.26M72 150.25v-23.79A184 184 0 0 0 96 128a184 184 0 0 0 24-1.54v23.79A163 163 0 0 1 96 152a163 163 0 0 1-24-1.75m96-40.32V124c0 8.39-12.41 17.4-32 22.87V123.5c12.91-3.13 23.84-7.79 32-13.57M96 56c41.21 0 72 14.78 72 28s-30.79 28-72 28s-72-14.78-72-28s30.79-28 72-28m-72 68v-14.07c8.16 5.78 19.09 10.44 32 13.57v23.37C36.41 141.4 24 132.39 24 124m64 48v-4.17c2.63.1 5.29.17 8 .17c3.88 0 7.67-.13 11.39-.35a122 122 0 0 0 12.61 3.76v23.46c-19.59-5.47-32-14.48-32-22.87m48 26.25V174.4a179.5 179.5 0 0 0 24 1.6a184 184 0 0 0 24-1.54v23.79a165.5 165.5 0 0 1-48 0m64-3.38V171.5c12.91-3.13 23.84-7.79 32-13.57V172c0 8.39-12.41 17.4-32 22.87"/></g></symbol>
+  <symbol id="i-keyboard" viewBox="0 0 256 256"><g fill="currentColor"><path d="M232 64v128a8 8 0 0 1-8 8H32a8 8 0 0 1-8-8V64a8 8 0 0 1 8-8h192a8 8 0 0 1 8 8" opacity=".2"/><path d="M224 48H32a16 16 0 0 0-16 16v128a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16V64a16 16 0 0 0-16-16m0 144H32V64h192zm-16-64a8 8 0 0 1-8 8H56a8 8 0 0 1 0-16h144a8 8 0 0 1 8 8m0-32a8 8 0 0 1-8 8H56a8 8 0 0 1 0-16h144a8 8 0 0 1 8 8M72 160a8 8 0 0 1-8 8h-8a8 8 0 0 1 0-16h8a8 8 0 0 1 8 8m96 0a8 8 0 0 1-8 8H96a8 8 0 0 1 0-16h64a8 8 0 0 1 8 8m40 0a8 8 0 0 1-8 8h-8a8 8 0 0 1 0-16h8a8 8 0 0 1 8 8"/></g></symbol>
+  <symbol id="i-github" viewBox="0 0 256 256"><g fill="currentColor"><path d="M208 104v8a48 48 0 0 1-48 48h-24a32 32 0 0 1 32 32v40h-64v-40a32 32 0 0 1 32-32h-24a48 48 0 0 1-48-48v-8a49.3 49.3 0 0 1 8.51-27.3A51.92 51.92 0 0 1 76 32a52 52 0 0 1 43.83 24h32.34A52 52 0 0 1 196 32a51.92 51.92 0 0 1 3.49 44.7A49.3 49.3 0 0 1 208 104" opacity=".2"/><path d="M208.3 75.68A59.74 59.74 0 0 0 202.93 28a8 8 0 0 0-6.93-4a59.75 59.75 0 0 0-48 24h-24a59.75 59.75 0 0 0-48-24a8 8 0 0 0-6.93 4a59.78 59.78 0 0 0-5.38 47.68A58.14 58.14 0 0 0 56 104v8a56.06 56.06 0 0 0 48.44 55.47A39.8 39.8 0 0 0 96 192v8H72a24 24 0 0 1-24-24a40 40 0 0 0-40-40a8 8 0 0 0 0 16a24 24 0 0 1 24 24a40 40 0 0 0 40 40h24v16a8 8 0 0 0 16 0v-40a24 24 0 0 1 48 0v40a8 8 0 0 0 16 0v-40a39.8 39.8 0 0 0-8.44-24.53A56.06 56.06 0 0 0 216 112v-8a58 58 0 0 0-7.7-28.32M200 112a40 40 0 0 1-40 40h-48a40 40 0 0 1-40-40v-8a41.74 41.74 0 0 1 6.9-22.48a8 8 0 0 0 1.1-7.69a43.8 43.8 0 0 1 .79-33.58a43.88 43.88 0 0 1 32.32 20.06a8 8 0 0 0 6.71 3.69h32.35a8 8 0 0 0 6.74-3.69a43.87 43.87 0 0 1 32.32-20.06a43.8 43.8 0 0 1 .77 33.58a8.09 8.09 0 0 0 1 7.65a41.76 41.76 0 0 1 7 22.52Z"/></g></symbol>
+  <symbol id="i-windows" viewBox="0 0 256 256"><g fill="currentColor"><path d="M128 144h80v72l-80-14.55Zm-96 40l64 11.64V144H32Zm96-129.45V112h80V40ZM32 112h64V60.36L32 72Z" opacity=".2"/><path d="M208 136h-80a8 8 0 0 0-8 8v57.45a8 8 0 0 0 6.57 7.88l80 14.54a7.6 7.6 0 0 0 1.43.13a8 8 0 0 0 8-8v-72a8 8 0 0 0-8-8m-8 70.41l-64-11.63V152h64ZM96 136H32a8 8 0 0 0-8 8v40a8 8 0 0 0 6.57 7.87l64 11.64a8.5 8.5 0 0 0 1.43.13a8 8 0 0 0 8-8V144a8 8 0 0 0-8-8m-8 50.05l-48-8.73V152h48ZM213.13 33.86a8 8 0 0 0-6.56-1.73l-80 14.55a8 8 0 0 0-6.57 7.87V112a8 8 0 0 0 8 8h80a8 8 0 0 0 8-8V40a8 8 0 0 0-2.87-6.14M200 104h-64V61.22l64-11.63Zm-98.87-49.78a8 8 0 0 0-6.56-1.73l-64 11.64A8 8 0 0 0 24 72v40a8 8 0 0 0 8 8h64a8 8 0 0 0 8-8V60.36a8 8 0 0 0-2.87-6.14M88 104H40V78.68L88 70Z"/></g></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">Math Runner</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#how">How it plays</a>
+      <a href="#levels">Levels</a>
+      <a href="#controls">Controls</a>
+      <a href="#download">Download</a>
+      <a class="ds-btn ds-btn-outline ds-btn-sm" href="https://github.com/IT-Kamianets/math-runner.itkamianets.com">
+        <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1 class="ds-display">Run to the right answer</h1>
+        <p class="lede ds-muted">A 3D street runner where every gate is a math question. Steer into the lane with the right answer.</p>
+        <div class="actions">
+          <a class="ds-btn ds-btn-primary ds-btn-lg" href="#download">Get the game</a>
+          <a class="ds-btn ds-btn-outline ds-btn-lg" href="#how">How it plays</a>
+        </div>
+      </div>
+      <div class="scene" role="img" aria-label="Illustration of the game: a runner approaches three answer boards, 15, 27 and 13, under the question 12 plus 15.">
+        <div class="bld l"></div><div class="bld l2"></div><div class="bld r"></div><div class="bld r2"></div>
+        <div class="lane a"></div><div class="lane b"></div>
+        <div class="q" aria-hidden="true">12 + 15</div>
+        <div class="boards" aria-hidden="true"><div class="board">15</div><div class="board">27</div><div class="board">13</div></div>
+        <div class="runner" aria-hidden="true"><div class="head"></div><div class="body"></div><div class="legs"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint" id="how">
+    <div class="wrap split">
+      <div>
+        <h2>One question, three lanes</h2>
+        <p class="sub ds-muted">The runner moves forward on its own. You only decide where to stand.</p>
+      </div>
+      <ol class="stack">
+        <li class="ds-card step"><span class="num" aria-hidden="true">1</span><div><h3>Read the question</h3><p class="ds-card-desc">It floats above the track as you run toward the next gate.</p></div></li>
+        <li class="ds-card step"><span class="num" aria-hidden="true">2</span><div><h3>Pick a lane</h3><p class="ds-card-desc">Each lane holds one answer. Switch lanes before you reach the boards.</p></div></li>
+        <li class="ds-card step"><span class="num" aria-hidden="true">3</span><div><h3>Keep your streak</h3><p class="ds-card-desc">Every 5 right answers in a row add a bonus. A wrong one costs a life.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split even">
+      <div>
+        <h2>Score and lives</h2>
+        <p class="sub ds-muted">You start with 3 lives. The run ends when they are gone.</p>
+        <div class="ds-card" style="margin-top:28px">
+          <div class="lives" role="img" aria-label="Three lives">
+            <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg>
+            <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg>
+            <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg>
+            <p class="ds-card-desc">3 lives per run</p>
+          </div>
+          <div class="row"><span class="ds-badge ds-badge-safe">Correct</span><p>+10 points, plus 1 for every 5 correct in a row.</p></div>
+          <div class="row"><span class="ds-badge ds-badge-danger">Wrong</span><p>Lose a life and your streak resets.</p></div>
+          <div class="row"><span class="ds-badge ds-badge-danger">Obstacle</span><p>Lose a life. Switch lanes, jump or slide to avoid it.</p></div>
+          <div class="row"><span class="ds-badge ds-badge-unknown"><svg class="icon" style="width:14px;height:14px;margin-right:4px" aria-hidden="true"><use href="#i-coins"/></svg>Coin</span><p>+1 point each. Power-ups: slow motion, magnet, shield and an extra life.</p></div>
+        </div>
+      </div>
+      <div id="levels">
+        <h2>Four levels of math</h2>
+        <p class="sub ds-muted">Wrong answers sit close to the right one, so guessing does not work.</p>
+        <div class="ds-card tbl" style="margin-top:28px">
+          <table class="ds-table">
+            <thead><tr><th scope="col">Level</th><th scope="col">Operations</th><th scope="col">Numbers</th></tr></thead>
+            <tbody>
+              <tr><td>Easy</td><td>+ and −</td><td>1 to 20</td></tr>
+              <tr><td>Medium</td><td>+ and −</td><td>5 to 50</td></tr>
+              <tr><td>Hard</td><td>+ − ×</td><td>2 to 50, tables to 10</td></tr>
+              <tr><td>Expert</td><td>+ − × ÷</td><td>5 to 99, tables to 12</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint" id="controls">
+    <div class="wrap split">
+      <div>
+        <h2>Controls</h2>
+        <p class="sub ds-muted">Play with a keyboard or a gamepad.</p>
+      </div>
+      <div class="ds-card">
+        <div class="ctl"><h3>Change lane</h3><div><div class="keys"><kbd class="ds-kbd">A</kbd><kbd class="ds-kbd">D</kbd><span class="ds-muted">or</span><kbd class="ds-kbd">←</kbd><kbd class="ds-kbd">→</kbd></div><p class="ds-card-desc">Left stick.</p></div></div>
+        <div class="ctl"><h3>Jump</h3><div><div class="keys"><kbd class="ds-kbd">Space</kbd><span class="ds-muted">or</span><kbd class="ds-kbd">↑</kbd></div><p class="ds-card-desc">South button. Clears low obstacles.</p></div></div>
+        <div class="ctl"><h3>Slide</h3><div><div class="keys"><kbd class="ds-kbd">S</kbd><span class="ds-muted">or</span><kbd class="ds-kbd">↓</kbd></div><p class="ds-card-desc">Passes under overhead beams.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="download">
+    <div class="wrap split">
+      <div>
+        <h2>Download for Windows</h2>
+        <p class="sub ds-muted">Free installer for Windows 10 and 11. Every release is listed on GitHub.</p>
+        <p class="note ds-muted">The installer is not code signed, so Windows may show a SmartScreen warning. Choose More info, then Run anyway.</p>
+      </div>
+      <div class="ds-card">
+        <div class="dl">
+          <svg class="icon" aria-hidden="true"><use href="#i-windows"/></svg>
+          <div><h3>Math Runner for Windows</h3><p class="ds-card-desc">Installer, .exe</p></div>
+          <a class="ds-btn ds-btn-primary" href="https://github.com/IT-Kamianets/math-runner.itkamianets.com/releases/latest/download/MathRunner-Setup.exe">Download</a>
+        </div>
+        <div class="dl">
+          <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+          <div><h3>All releases</h3><p class="ds-card-desc">Older versions and release notes</p></div>
+          <a class="ds-btn ds-btn-outline" href="https://github.com/IT-Kamianets/math-runner.itkamianets.com/releases">View on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="ds-muted">Math Runner</p>
+    <ul>
+      <li><a href="https://github.com/IT-Kamianets/math-runner.itkamianets.com"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Source on GitHub</a></li>
+      <li><a href="https://3d.itkamianets.com">IT Kamianets 3D Engine</a></li>
+      <li><a href="#top">Back to top</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

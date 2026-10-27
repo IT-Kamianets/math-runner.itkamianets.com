@@ -14,12 +14,12 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
+  m_Fog: 1
+  m_FogColor: {r: 0.72, g: 0.84, b: 0.96, a: 1}
+  m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_LinearFogStart: 70
+  m_LinearFogEnd: 170
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -177,9 +177,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  near clip plane: 0.1
+  far clip plane: 400
+  field of view: 62
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -205,8 +205,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.104528464, y: 0, z: 0, w: 0.9945219}
+  m_LocalPosition: {x: 0, y: 3.3, z: -6.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -248,14 +248,14 @@ MonoBehaviour:
   m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
-  m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,14 +282,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1.15
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -334,8 +334,11 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
 --- !u!4 &410087041
 Transform:
   m_ObjectHideFlags: 0
@@ -344,7 +347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.3928775, y: -0.23644298, z: 0.105271205, w: 0.8824172}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -363,17 +366,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
-  m_LightLayerMask: 1
-  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
-  m_ShadowLayerMask: 1
-  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +432,129 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1875521266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1875521268}
+  - component: {fileID: 1875521267}
+  m_Layer: 0
+  m_Name: Game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1875521267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875521266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 059647b0e22b363438a867cfc0c962a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MathRunner.Game::MathRunner.Game.GameController
+  prefabs:
+  - key: 01_runner_kid
+    prefab: {fileID: 4417009116244476844, guid: 717c94e944ccbf7459f9a21586a3b4a7, type: 3}
+  - key: 02_runner_skin_teal
+    prefab: {fileID: 8792678290045411736, guid: 3e98a80337ec75c4d8e0aedd63bfc0f3, type: 3}
+  - key: 03_runner_skin_red
+    prefab: {fileID: 2199849945103135103, guid: c2f9b4f8a0eb4cd459117494433f1515, type: 3}
+  - key: 04_shop_red
+    prefab: {fileID: 1558248340867483449, guid: 253857bfaaab9bb4cbd1913c30b5f41f, type: 3}
+  - key: 05_shop_teal
+    prefab: {fileID: 2552479115495645572, guid: f3480a320e3caa94491e4ebef35e7d8a, type: 3}
+  - key: 06_shop_yellow
+    prefab: {fileID: 1076277578235865139, guid: 6801979713a8ed544aa2ab7d2ec47c64, type: 3}
+  - key: 07_apartment_tall
+    prefab: {fileID: 4113270838999687698, guid: c0d9358c410994c4eb1c028ebe4d7f12, type: 3}
+  - key: 08_apartment_wide
+    prefab: {fileID: 8978711784507808036, guid: dc2322a5561eba4439fd4a1a462b6866, type: 3}
+  - key: 09_corner_building
+    prefab: {fileID: 8982594370578211407, guid: 2322b419325b47e4fac44f7dd544072b, type: 3}
+  - key: 10_skyline_a
+    prefab: {fileID: 4579302652010665920, guid: 626c8e3236275804aaf84d4d9e24196b, type: 3}
+  - key: 11_skyline_b
+    prefab: {fileID: 2250252155585490772, guid: abdbb0bd94c7b794ba00fd9b7d96b076, type: 3}
+  - key: 12_street_lamp
+    prefab: {fileID: 6894298574282827325, guid: e4ad1a2a68cf36c4dad815b8db084de7, type: 3}
+  - key: 13_tree_round
+    prefab: {fileID: 8716200540752172762, guid: 337aff47ccfe87843bc21970d1bb4df2, type: 3}
+  - key: 14_bush
+    prefab: {fileID: 6154892262222831838, guid: bb04066c54d8b524e8da3b4f54e049ec, type: 3}
+  - key: 15_bench
+    prefab: {fileID: 3240098657075079312, guid: 856d20e55699b394baf62097c8186dae, type: 3}
+  - key: 16_trash_bin
+    prefab: {fileID: 7745595003742667129, guid: dee58f9daa6c0554b898574866e910a0, type: 3}
+  - key: 17_mailbox
+    prefab: {fileID: 8303611254797768397, guid: ad8148a26859582489c534388f2c5b7a, type: 3}
+  - key: 18_bus_shelter
+    prefab: {fileID: 9204798240957929438, guid: 6ef451f961826f4428d09e99ab19aaba, type: 3}
+  - key: 19_flower_planter
+    prefab: {fileID: 5281374587036484042, guid: c2a9ff48a3243ce4d9cb25cc312ddb1b, type: 3}
+  - key: 20_parked_car
+    prefab: {fileID: 8896411691591761422, guid: 619b07813ed59644d8a5c33b81babda5, type: 3}
+  - key: 21_parked_bus
+    prefab: {fileID: 805389165384541075, guid: dd7bc8fe55fb6414fa9d196ad1922952, type: 3}
+  - key: 22_hydrant
+    prefab: {fileID: 2420832430512023169, guid: 05678cc36bdda3d4c87ababd38f882f8, type: 3}
+  - key: 23_striped_barrier
+    prefab: {fileID: 2697255070119890369, guid: 603aed3cfd4cc3a4c9f046d23a27702e, type: 3}
+  - key: 24_cone_cluster
+    prefab: {fileID: 8656783869008552035, guid: 8e87886d98342a14b8894f06b8202abc, type: 3}
+  - key: 25_crate_stack
+    prefab: {fileID: 1580087694895175981, guid: 076b8774e30bbf441a0e6f4a526a484c, type: 3}
+  - key: 26_low_fence
+    prefab: {fileID: 7901405175081539077, guid: a416888d9f2eb224e970aa180168f324, type: 3}
+  - key: 27_overhead_sign
+    prefab: {fileID: 4343677054031077131, guid: 07226c83d1af21749b6d4a9812b5b997, type: 3}
+  - key: 28_star_coin
+    prefab: {fileID: 3249679981063485911, guid: 67be86f35c742c54f81b2eeff1a14afc, type: 3}
+  - key: 29_slow_clock
+    prefab: {fileID: 8992590759238281046, guid: 94125d227c480fe438cb8a379b18ef40, type: 3}
+  - key: 30_magnet
+    prefab: {fileID: 3493961838427475960, guid: 65f8a235df955384ab5d2d48701ede17, type: 3}
+  - key: 31_shield_bubble
+    prefab: {fileID: 992902369245060456, guid: ee45e82f203f89d44870414157ea67d0, type: 3}
+  - key: 32_extra_life_heart
+    prefab: {fileID: 2134417354200080770, guid: c9546e54c62dd3849807bdb0f9608d33, type: 3}
+  - key: answer_board
+    prefab: {fileID: 763659915733313722, guid: c68575e8c9c731942bb70608462b2882, type: 3}
+  - key: ground_fill
+    prefab: {fileID: 2394296621736653456, guid: 2d9e128d95afa184e93332761b690174, type: 3}
+  - key: lane_marking
+    prefab: {fileID: 2472323725919830115, guid: 60fc9812529b3a248b9ff2b7fc397b6e, type: 3}
+  - key: road_segment
+    prefab: {fileID: 5199410593459524736, guid: 92466403297905a4fbd692dcfa64fafa, type: 3}
+  - key: sidewalk_segment
+    prefab: {fileID: 9195740550390754958, guid: 58dc7fd1050be434dbb729742f27864e, type: 3}
+  gameCamera: {fileID: 330585545}
+  runnerYaw: 0
+  leftBuildingYaw: 90
+  rightBuildingYaw: -90
+--- !u!4 &1875521268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875521266}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -430,3 +562,4 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
+  - {fileID: 1875521268}

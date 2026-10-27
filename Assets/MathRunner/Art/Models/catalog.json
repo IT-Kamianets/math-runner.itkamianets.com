@@ -1,0 +1,372 @@
+[
+  {
+    "name": "01_runner_kid",
+    "triangles": 664,
+    "budget": 15000,
+    "size_m": [
+      1.49,
+      1.8,
+      0.478
+    ]
+  },
+  {
+    "name": "02_runner_skin_teal",
+    "triangles": 664,
+    "budget": 15000,
+    "size_m": [
+      1.49,
+      1.8,
+      0.478
+    ]
+  },
+  {
+    "name": "03_runner_skin_red",
+    "triangles": 664,
+    "budget": 15000,
+    "size_m": [
+      1.49,
+      1.8,
+      0.478
+    ]
+  },
+  {
+    "name": "04_shop_red",
+    "triangles": 528,
+    "budget": 5000,
+    "size_m": [
+      6.0,
+      6.56,
+      4.695
+    ]
+  },
+  {
+    "name": "05_shop_teal",
+    "triangles": 528,
+    "budget": 5000,
+    "size_m": [
+      6.0,
+      6.56,
+      4.695
+    ]
+  },
+  {
+    "name": "06_shop_yellow",
+    "triangles": 528,
+    "budget": 5000,
+    "size_m": [
+      6.0,
+      6.56,
+      4.695
+    ]
+  },
+  {
+    "name": "07_apartment_tall",
+    "triangles": 1824,
+    "budget": 5000,
+    "size_m": [
+      6.0,
+      12.2,
+      4.395
+    ]
+  },
+  {
+    "name": "08_apartment_wide",
+    "triangles": 1248,
+    "budget": 5000,
+    "size_m": [
+      6.0,
+      8.8,
+      4.395
+    ]
+  },
+  {
+    "name": "09_corner_building",
+    "triangles": 492,
+    "budget": 5000,
+    "size_m": [
+      6.0,
+      7.1,
+      4.065
+    ]
+  },
+  {
+    "name": "10_skyline_a",
+    "triangles": 804,
+    "budget": 1500,
+    "size_m": [
+      6.0,
+      13.36,
+      4.065
+    ]
+  },
+  {
+    "name": "11_skyline_b",
+    "triangles": 1020,
+    "budget": 1500,
+    "size_m": [
+      6.0,
+      16.76,
+      4.065
+    ]
+  },
+  {
+    "name": "12_street_lamp",
+    "triangles": 96,
+    "budget": 800,
+    "size_m": [
+      1.145,
+      3.56,
+      0.418
+    ]
+  },
+  {
+    "name": "13_tree_round",
+    "triangles": 200,
+    "budget": 1500,
+    "size_m": [
+      2.268,
+      3.5,
+      1.902
+    ]
+  },
+  {
+    "name": "14_bush",
+    "triangles": 160,
+    "budget": 800,
+    "size_m": [
+      1.468,
+      0.9,
+      0.995
+    ]
+  },
+  {
+    "name": "15_bench",
+    "triangles": 144,
+    "budget": 800,
+    "size_m": [
+      1.7,
+      1.25,
+      0.61
+    ]
+  },
+  {
+    "name": "16_trash_bin",
+    "triangles": 84,
+    "budget": 500,
+    "size_m": [
+      0.7,
+      1.02,
+      0.668
+    ]
+  },
+  {
+    "name": "17_mailbox",
+    "triangles": 48,
+    "budget": 500,
+    "size_m": [
+      0.625,
+      1.33,
+      0.418
+    ]
+  },
+  {
+    "name": "18_bus_shelter",
+    "triangles": 108,
+    "budget": 1500,
+    "size_m": [
+      3.0,
+      2.29,
+      1.3
+    ]
+  },
+  {
+    "name": "19_flower_planter",
+    "triangles": 156,
+    "budget": 600,
+    "size_m": [
+      1.0,
+      0.91,
+      0.6
+    ]
+  },
+  {
+    "name": "20_parked_car",
+    "triangles": 452,
+    "budget": 2000,
+    "size_m": [
+      1.924,
+      1.65,
+      3.19
+    ]
+  },
+  {
+    "name": "21_parked_bus",
+    "triangles": 524,
+    "budget": 2500,
+    "size_m": [
+      1.924,
+      1.65,
+      5.89
+    ]
+  },
+  {
+    "name": "22_hydrant",
+    "triangles": 136,
+    "budget": 400,
+    "size_m": [
+      0.6,
+      0.9,
+      0.5
+    ]
+  },
+  {
+    "name": "23_striped_barrier",
+    "triangles": 144,
+    "budget": 600,
+    "size_m": [
+      2.0,
+      1.04,
+      0.6
+    ]
+  },
+  {
+    "name": "24_cone_cluster",
+    "triangles": 288,
+    "budget": 500,
+    "size_m": [
+      1.32,
+      0.58,
+      1.0
+    ]
+  },
+  {
+    "name": "25_crate_stack",
+    "triangles": 216,
+    "budget": 800,
+    "size_m": [
+      1.56,
+      1.56,
+      0.855
+    ]
+  },
+  {
+    "name": "26_low_fence",
+    "triangles": 48,
+    "budget": 600,
+    "size_m": [
+      1.8,
+      0.8,
+      0.18
+    ]
+  },
+  {
+    "name": "27_overhead_sign",
+    "triangles": 120,
+    "budget": 800,
+    "size_m": [
+      2.25,
+      2.3,
+      0.5
+    ]
+  },
+  {
+    "name": "28_star_coin",
+    "triangles": 130,
+    "budget": 300,
+    "size_m": [
+      0.9,
+      0.9,
+      0.165
+    ]
+  },
+  {
+    "name": "29_slow_clock",
+    "triangles": 156,
+    "budget": 800,
+    "size_m": [
+      0.86,
+      0.96,
+      0.187
+    ]
+  },
+  {
+    "name": "30_magnet",
+    "triangles": 60,
+    "budget": 800,
+    "size_m": [
+      0.7,
+      0.815,
+      0.2
+    ]
+  },
+  {
+    "name": "31_shield_bubble",
+    "triangles": 168,
+    "budget": 500,
+    "size_m": [
+      1.7,
+      1.7,
+      1.7
+    ]
+  },
+  {
+    "name": "32_extra_life_heart",
+    "triangles": 40,
+    "budget": 500,
+    "size_m": [
+      0.86,
+      0.75,
+      0.3
+    ]
+  },
+  {
+    "name": "road_segment",
+    "triangles": 12,
+    "budget": 100,
+    "size_m": [
+      6.0,
+      0.1,
+      12.0
+    ]
+  },
+  {
+    "name": "sidewalk_segment",
+    "triangles": 24,
+    "budget": 100,
+    "size_m": [
+      2.0,
+      0.36,
+      12.0
+    ]
+  },
+  {
+    "name": "lane_marking",
+    "triangles": 12,
+    "budget": 100,
+    "size_m": [
+      0.12,
+      0.01,
+      1.2
+    ]
+  },
+  {
+    "name": "answer_board",
+    "triangles": 24,
+    "budget": 100,
+    "size_m": [
+      1.6,
+      1.0,
+      0.145
+    ]
+  },
+  {
+    "name": "ground_fill",
+    "triangles": 12,
+    "budget": 100,
+    "size_m": [
+      12.0,
+      0.05,
+      12.0
+    ]
+  }
+]
