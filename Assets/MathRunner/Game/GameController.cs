@@ -116,6 +116,7 @@ namespace MathRunner.Game
             _hud.MenuClicked += () => _fsm.TryMoveTo(GameState.Menu);
             _hud.ResumeClicked += () => _fsm.TryMoveTo(GameState.Running);
             _hud.TierClicked += SelectTier;
+            _hud.QuitClicked += QuitGame;
 
             _fsm.Changed += OnStateChanged;
             EngineInput.Default.SchemeChanged += _ => RefreshHint();
@@ -293,6 +294,15 @@ namespace MathRunner.Game
         {
             _tierIndex = index;
             _hud.HighlightTier(index);
+        }
+
+        private static void QuitGame()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
 
         private void StartRun()
