@@ -16,17 +16,17 @@
 <meta property="og:title" content="Math Runner: run to the right answer">
 <meta property="og:description" content="A 3D street runner where every gate is a math question. Steer into the lane with the correct answer.">
 <meta property="og:url" content="https://math-runner.itkamianets.com/">
-<meta property="og:image" content="https://math-runner.itkamianets.com/og-image.png">
-<meta property="og:image:type" content="image/png">
+<meta property="og:image" content="https://math-runner.itkamianets.com/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Math Runner: the question 12 + 15 above three answer boards, 15, 27 and 13, with the runner approaching.">
+<meta property="og:image:alt" content="Math Runner gameplay: a runner on a city street faces three answer boards, 10, 9 and 12, under the question 19 - 10 = ?.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Math Runner: run to the right answer">
 <meta name="twitter:description" content="A 3D street runner where every gate is a math question. Steer into the lane with the correct answer.">
-<meta name="twitter:image" content="https://math-runner.itkamianets.com/og-image.png">
-<meta name="twitter:image:alt" content="Math Runner: the question 12 + 15 above three answer boards, 15, 27 and 13, with the runner approaching.">
+<meta name="twitter:image" content="https://math-runner.itkamianets.com/og-image.jpg">
+<meta name="twitter:image:alt" content="Math Runner gameplay: a runner on a city street faces three answer boards, 10, 9 and 12, under the question 19 - 10 = ?.">
 
 <script type="application/ld+json">
 {
@@ -34,7 +34,7 @@
   "@type": "VideoGame",
   "name": "Math Runner",
   "url": "https://math-runner.itkamianets.com/",
-  "image": "https://math-runner.itkamianets.com/og-image.png",
+  "image": "https://math-runner.itkamianets.com/og-image.jpg",
   "description": "A 3D endless runner where every gate is a math question. Steer into the lane with the correct answer.",
   "genre": ["Endless runner", "Educational"],
   "gamePlatform": "Windows",
@@ -79,6 +79,7 @@
   .actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
 
   /* Game illustration */
+  .shot { display: block; width: 100%; height: auto; border-radius: var(--radius-2xl, 1rem); border: 1px solid var(--border); box-shadow: var(--shadow-lg); }
   .scene { position: relative; aspect-ratio: 4 / 3.2; overflow: hidden; border-radius: var(--radius-2xl, 1rem); border: 1px solid var(--border); box-shadow: var(--shadow-lg);
     background: linear-gradient(180deg, #8fd3ff 0%, #d6efff 36%, #b8a79f 36%, #94776d 100%); }
   .scene .bld { position: absolute; top: 12%; height: 46%; border-radius: 6px; }
@@ -208,13 +209,7 @@
           <a class="ds-btn ds-btn-outline ds-btn-lg" href="#how">How it plays</a>
         </div>
       </div>
-      <div class="scene" role="img" aria-label="Illustration of the game: a runner approaches three answer boards, 15, 27 and 13, under the question 12 plus 15.">
-        <div class="bld l"></div><div class="bld l2"></div><div class="bld r"></div><div class="bld r2"></div>
-        <div class="lane a"></div><div class="lane b"></div>
-        <div class="q" aria-hidden="true">12 + 15</div>
-        <div class="boards" aria-hidden="true"><div class="board">15</div><div class="board">27</div><div class="board">13</div></div>
-        <div class="runner" aria-hidden="true"><div class="head"></div><div class="body"></div><div class="legs"></div></div>
-      </div>
+      <img class="shot" src="images/gameplay.webp" width="1280" height="720" alt="Math Runner gameplay: a runner on a city street faces three answer boards, 10, 9 and 12, under the question 19 - 10 = ?." fetchpriority="high">
     </div>
   </section>
 
