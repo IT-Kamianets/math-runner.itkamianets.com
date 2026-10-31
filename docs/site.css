@@ -1,0 +1,174 @@
+/* Math Runner page layout. The Putty kit in ds.css owns the brand tokens. */
+:root { --primary: oklch(0.52 0.19 256); --ring: var(--primary); }
+html { scroll-behavior: smooth; scroll-padding-top: 104px; }
+body { margin: 0; font-family: var(--font-sans); }
+.wrap { width: 100%; max-width: 1248px; margin-inline: auto; padding-inline: 40px; }
+.icon { width: 1.25em; height: 1.25em; flex: none; }
+.icon-lg { width: 28px; height: 28px; }
+.ds a:focus-visible, summary:focus-visible, .tbl:focus-visible { outline: 3px solid var(--ring); outline-offset: 5px; }
+.ds .ds-btn { min-height: 44px; padding-block: 8px; transition-property: background-color, box-shadow, opacity; }
+.ds .ds-btn-lg { min-height: 52px; padding-inline: 24px; font-weight: 800; }
+.ds .ds-btn-primary { background-image: linear-gradient(180deg, oklch(0.55 0.19 256), var(--primary)); }
+.ds .ds-btn-primary:hover { box-shadow: var(--shadow-clay-primary); }
+.ds .ds-btn-outline:hover, .ds .ds-btn-ghost:hover { background-color: var(--card); color: var(--foreground); }
+.ds .ds-btn:active { translate: none; scale: none; }
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 30; padding: 12px 20px; border-radius: 10px; background: var(--card); }
+.skip-link:focus { top: 12px; }
+
+/* Quiet, persistent wayfinding. */
+.site-header { position: sticky; top: 0; z-index: 10; background: var(--background); border-bottom: 1px solid var(--border); }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 88px; }
+.brand { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; flex-shrink: 0; font-weight: 800; font-size: 1.1875rem; letter-spacing: -.035em; color: var(--foreground) !important; }
+.brand img { display: block; width: 44px; height: 44px; border-radius: 12px; }
+.nav { display: flex; align-items: center; gap: 8px; }
+.nav a:not(.ds-btn) { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 12px; font-size: .9375rem; font-weight: 700; color: var(--muted-foreground); }
+.mobile-nav { display: none; }
+
+/* The game leads. Copy sits beside the real screenshot, never over it. */
+.hero { padding-block: 80px 56px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 48px; align-items: center; }
+.ds .hero h1 { margin: 0; font-size: clamp(3.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.02; letter-spacing: -.055em; text-wrap: balance; }
+.hero h1 span { display: block; color: var(--primary) !important; }
+.ds .lede { margin: 24px 0 0; max-width: 32ch; font-size: 1.1875rem; line-height: 1.65; }
+.actions { margin-top: 32px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+.hero .ds-btn-outline { box-shadow: none; background: transparent; }
+.ds .availability { margin: 16px 0 0; font-size: .875rem; }
+.game-figure { position: relative; margin: 0; min-width: 0; padding: 12px; border-radius: 24px; background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-clay-lg); }
+.shot { display: block; width: 100%; height: auto; border-radius: 14px; background: var(--muted); }
+.game-figure figcaption { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 8px 4px; font-size: .8125rem; color: var(--muted-foreground); }
+.game-figure figcaption span:last-child { font-weight: 800; color: var(--foreground); }
+.game-facts { display: grid; grid-template-columns: repeat(3, 1fr); margin: 56px 0 0; padding: 24px 0; list-style: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.game-facts li { display: flex; align-items: baseline; justify-content: center; gap: 12px; padding: 0 24px; border-right: 1px solid var(--border); }
+.game-facts li:last-child { border-right: 0; }
+.game-facts strong { font-size: 2rem; line-height: 1.2; font-weight: 800; letter-spacing: -.04em; }
+.game-facts span { font-size: .9375rem; color: var(--muted-foreground) !important; }
+
+/* Different rhythms for learning the loop, the rules, and the controls. */
+.section { padding-block: 80px; }
+.section.tint { background: var(--muted); border-block: 1px solid var(--border); }
+.ds .section h2 { margin: 0; font-size: clamp(1.875rem, 3vw, 2.5rem); line-height: 1.15; font-weight: 800; letter-spacing: -.04em; text-wrap: balance; }
+.section .sub { margin: 16px 0 0; max-width: 44ch; font-size: 1.0625rem; line-height: 1.65; }
+.section-head { margin-bottom: 32px; }
+.how-head { display: flex; justify-content: space-between; align-items: stretch; gap: 40px; }
+.how-head .sub { margin-top: 0; max-width: 38ch; }
+.split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: start; }
+.split.even { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.stack { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 0; padding: 0; list-style: none; }
+.ds-card.step { display: flex; flex-direction: column; align-items: start; gap: 24px; padding: 28px; }
+.step .num { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: var(--accent); color: var(--accent-foreground); font-size: 1.25rem; font-weight: 800; }
+.step:nth-child(2) .num { color: var(--primary); background: color-mix(in oklch, var(--primary) 10%, var(--card)); }
+.step:nth-child(3) .num { background: oklch(.92 .06 150); color: oklch(.38 .11 152); }
+.ds .step h3 { margin: 0 0 12px; font-size: 1.25rem; font-weight: 800; letter-spacing: -.02em; }
+.step p { margin: 0; line-height: 1.7; font-size: .9375rem; }
+.content-card { margin-top: 28px; }
+.ds .ds-badge { padding: 5px 12px; font-size: .75rem; line-height: 1.4; justify-self: start; font-weight: 800; }
+.ds .ds-badge-safe { background-color: oklch(.92 .06 150); color: oklch(.38 .11 152); }
+.ds .ds-badge-danger { background-color: oklch(.93 .05 25); color: oklch(.42 .17 26); }
+.ds .ds-badge-unknown { background-color: oklch(.9 .085 92); color: oklch(.38 .09 75); }
+.row { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; align-items: start; padding: 20px 24px; border-top: 1px solid var(--border); }
+.row p { margin: 0; font-size: .9375rem; line-height: 1.6; }
+.lives { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 24px; background: color-mix(in oklch, var(--destructive) 4%, var(--card)); }
+.lives .icon { width: 28px; height: 28px; color: var(--destructive); }
+.lives p { margin: 0 0 0 8px; }
+.tbl { overflow-x: auto; }
+.ds-table { width: 100%; font-size: .9375rem; }
+.ds-table th, .ds-table td { padding: 20px; line-height: 1.6; }
+.ds-table th { font-size: .75rem; background: var(--secondary); }
+.ds-table td:first-child { font-weight: 800; }
+.ds-table tr:last-child td { border-bottom: 0; }
+.ds-table td:nth-child(2) { white-space: nowrap; }
+.controls-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.ctl { padding: 28px; }
+.ds .ctl h3 { margin: 0 0 24px; font-size: 1.25rem; font-weight: 800; }
+.ctl p { margin: 16px 0 0; font-size: .9375rem; line-height: 1.6; }
+.keys { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; min-height: 40px; }
+.ds-kbd { display: inline-grid; place-items: center; min-width: 32px; height: 36px; padding: 4px 12px; font-size: .875rem; border-bottom-width: 3px; }
+
+/* A distinct final destination, with release details beside the download. */
+.download-section { padding-top: 80px; }
+.download-panel { padding: 48px; border: 1px solid var(--border); border-radius: 28px; background: var(--secondary); }
+.download-panel .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 40px; }
+.dl { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 16px; align-items: start; padding: 28px; border-top: 1px solid var(--border); }
+.dl:first-child { border-top: 0; }
+.dl .icon { width: 32px; height: 32px; color: var(--primary); }
+.ds .dl h3 { margin: 0 0 4px; font-size: 1.125rem; font-weight: 800; }
+.dl p { margin: 0; }
+.dl .ds-btn { grid-column: 1 / -1; width: 100%; margin-top: 8px; }
+.ds .note { margin: 24px 0 0; font-size: .875rem; line-height: 1.7; }
+.site-footer { border-top: 1px solid var(--border); padding-block: 32px; }
+.site-footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; }
+.site-footer p { margin: 0; }
+.site-footer ul { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; margin: 0; padding: 0; }
+.site-footer a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: .875rem; }
+
+@media (hover: hover) and (pointer: fine) {
+  .nav a:not(.ds-btn):hover { color: var(--primary); text-decoration: none; }
+  .ds .ds-btn-outline:hover { background-color: var(--accent); }
+  .ds .ds-btn-primary:hover { filter: brightness(1.06); }
+}
+@media (max-width: 1000px) {
+  .wrap { padding-inline: 32px; }
+  .hero-grid { gap: 32px; }
+  .ds .hero h1 { font-size: 3.5rem; }
+  .nav { gap: 0; }
+  .nav a:not(.ds-btn) { padding-inline: 8px; }
+  .split, .split.even { gap: 32px; }
+  .stack, .controls-grid { gap: 16px; }
+  .ds-card.step, .ctl { padding: 24px; }
+  .download-panel { padding: 32px; }
+}
+@media (max-width: 760px) {
+  .site-header .wrap { min-height: 76px; }
+  .nav { display: none; }
+  .mobile-nav { display: block; position: relative; }
+  .mobile-nav summary { display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 16px; font-weight: 800; border: 1px solid var(--border); border-radius: 12px; background: var(--card); cursor: pointer; list-style: none; }
+  .mobile-nav summary::-webkit-details-marker { display: none; }
+  .mobile-nav nav { position: absolute; top: calc(100% + 12px); right: 0; display: grid; min-width: 208px; padding: 8px; border-radius: 16px; background: var(--card); border: 1px solid var(--border); box-shadow: var(--shadow-clay-lg); }
+  .mobile-nav nav a { display: flex; align-items: center; min-height: 44px; padding: 8px 16px; }
+  .hero { padding-block: 48px 32px; }
+  .hero-grid, .split, .split.even, .download-panel .split { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .ds .hero h1 { max-width: 12ch; font-size: clamp(3rem, 9vw, 4rem); }
+  .ds .lede { max-width: 38ch; font-size: 1.0625rem; margin-top: 20px; }
+  .actions { margin-top: 24px; }
+  .game-facts { margin-top: 32px; }
+  .game-facts li { flex-direction: column; align-items: center; gap: 4px; padding: 0 8px; text-align: center; }
+  .game-facts strong { font-size: 1.75rem; }
+  .game-facts span { font-size: .8125rem; }
+  .section { padding-block: 56px; }
+  .how-head { display: block; }
+  .how-head .sub { margin-top: 16px; }
+  .stack { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .ds-card.step { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 16px; }
+  .step .num { width: 40px; height: 40px; }
+  .ds .step h3 { margin-bottom: 8px; }
+  .controls-grid { grid-template-columns: minmax(0, 1fr); }
+  .ds .ctl h3 { margin-bottom: 16px; }
+  .download-panel { padding: 28px; }
+}
+@media (max-width: 480px) {
+  .wrap { padding-inline: 20px; }
+  .brand { font-size: 1.0625rem; }
+  .brand img { width: 40px; height: 40px; }
+  .ds .hero h1 { font-size: 3rem; }
+  .actions { align-items: stretch; }
+  .actions .ds-btn-primary { width: 100%; }
+  .actions .ds-btn-outline { min-height: 44px; padding-inline: 0; border: 0; }
+  .game-figure { padding: 8px; border-radius: 20px; }
+  .game-figure figcaption { padding: 12px 4px 4px; }
+  .row { grid-template-columns: 80px minmax(0, 1fr); gap: 12px; padding: 20px; }
+  .ds .ds-badge { padding-inline: 8px; }
+  .lives { padding: 20px; gap: 8px; }
+  .lives p { font-size: .8125rem; }
+  .ds-table { font-size: .8125rem; }
+  .ds-table th, .ds-table td { padding: 16px 12px; }
+  .ds-table th { font-size: .625rem; }
+  .download-panel { padding: 24px 20px; border-radius: 24px; }
+  .download-panel .dl { padding: 20px; }
+  .ds .download-panel h2 { font-size: 1.875rem; }
+  .site-footer ul { display: grid; gap: 0; }
+  .site-footer .wrap { flex-direction: column; align-items: start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ds .ds-btn { transition: none; }
+}

@@ -59,128 +59,10 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="ds.css?v=putty">
-<style>
-  /* Layout only. Components, colour, type and material come from ds.css.
-     Exception: Putty's blue gives 4.2:1 for white labels and 3.9:1 for links, under the 4.5:1 minimum,
-     so the primary is darkened one step. */
-  :root { --primary: oklch(0.52 0.19 256); --ring: oklch(0.52 0.19 256); }
-  .ds .ds-btn-primary { background-image: linear-gradient(180deg, oklch(0.6 0.18 254), var(--primary) 55%, oklch(0.46 0.19 258)); }
-  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
-  body { margin: 0; font-family: var(--font-sans); }
-  .wrap { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: 24px; }
-  .icon { width: 1.25em; height: 1.25em; flex: none; }
-  .icon-lg { width: 28px; height: 28px; }
-
-  /* Header */
-  .site-header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--background) 90%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
-  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; }
-  .brand { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; flex-shrink: 0; font-weight: 800; font-size: 1.125rem; letter-spacing: -0.02em; color: var(--foreground) !important; }
-  .brand img { display: block; width: 40px; height: 40px; border-radius: 10px; }
-  .nav { display: flex; align-items: center; gap: 4px; }
-  .nav a:not(.ds-btn) { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 12px; font-weight: 500; font-size: .9375rem; color: var(--muted-foreground); border-radius: 10px; }
-
-  /* Hero */
-  .hero { padding-block: 64px 80px; }
-  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 56px; align-items: center; }
-  .hero h1 { margin: 0; font-size: clamp(2.5rem, 5.4vw, 4rem); line-height: 1.02; text-wrap: balance; }
-  .ds .lede { margin: 20px 0 0; max-width: 32rem; font-size: 1.1875rem; line-height: 1.55; }
-  .actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
-
-  /* Game illustration */
-  .shot { display: block; width: 100%; height: auto; border-radius: var(--radius-2xl, 1rem); border: 1px solid var(--border); box-shadow: var(--shadow-lg); }
-  .scene { position: relative; aspect-ratio: 4 / 3.2; overflow: hidden; border-radius: var(--radius-2xl, 1rem); border: 1px solid var(--border); box-shadow: var(--shadow-lg);
-    background: linear-gradient(180deg, #8fd3ff 0%, #d6efff 36%, #b8a79f 36%, #94776d 100%); }
-  .scene .bld { position: absolute; top: 12%; height: 46%; border-radius: 6px; }
-  .scene .bld.l { left: 3%; width: 13%; background: linear-gradient(180deg, #e5484d, #b3262b); transform: skewY(7deg); }
-  .scene .bld.l2 { left: 17%; width: 9%; top: 22%; height: 36%; background: linear-gradient(180deg, #f5b942, #d58f12); transform: skewY(5deg); }
-  .scene .bld.r { right: 3%; width: 13%; background: linear-gradient(180deg, #1fa5a8, #0f7478); transform: skewY(-7deg); }
-  .scene .bld.r2 { right: 17%; width: 9%; top: 22%; height: 36%; background: linear-gradient(180deg, #8a6df0, #5b3fc9); transform: skewY(-5deg); }
-  .scene .lane { position: absolute; top: 36%; bottom: 0; width: 3px; background: rgba(255,255,255,.55); }
-  .scene .lane.a { left: 36%; transform: skewX(-9deg); }
-  .scene .lane.b { left: 64%; transform: skewX(9deg); }
-  .scene .q { position: absolute; top: 8%; left: 50%; transform: translateX(-50%); white-space: nowrap; font-weight: 900; font-size: clamp(1.75rem, 4.6vw, 3rem); color: #ffcf33; -webkit-text-stroke: 2px #4a2b00; paint-order: stroke fill; }
-  .scene .boards { position: absolute; left: 22%; right: 22%; top: 30%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5%; }
-  .scene .board { display: grid; place-items: center; aspect-ratio: 1 / .8; border-radius: 10px; background: #19d3ef; color: #fff; font-weight: 900; font-size: clamp(1.1rem, 3.2vw, 2.1rem); -webkit-text-stroke: 1.5px #0a4a57; paint-order: stroke fill; box-shadow: 0 5px 0 #0f93a8; }
-  .scene .runner { position: absolute; left: 50%; bottom: 6%; transform: translateX(-50%); width: 12%; aspect-ratio: 1 / 2; }
-  .runner .head { position: absolute; top: 0; left: 16%; width: 68%; aspect-ratio: 1; border-radius: 50%; background: #7a5a3a; }
-  .runner .body { position: absolute; top: 36%; left: 8%; width: 84%; height: 34%; border-radius: 12px 12px 6px 6px; background: #8a8f98; }
-  .runner .legs { position: absolute; top: 66%; left: 16%; width: 68%; height: 34%; border-radius: 4px 4px 10px 10px; background: #2f4f82; }
-
-  /* Sections */
-  .section { padding-block: 80px; }
-  .section.tint { background: var(--muted); border-block: 1px solid var(--border); }
-  .section h2 { margin: 0; font-size: clamp(1.75rem, 3.2vw, 2.25rem); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance; }
-  .section .sub { margin: 12px 0 0; max-width: 34rem; font-size: 1.0625rem; }
-  .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; align-items: start; }
-  .split.even { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
-  .stack { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
-
-  /* Steps */
-  .step { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 18px; padding: 22px 24px; align-items: start; }
-  .step .num { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; font-weight: 800; font-size: 1.25rem; background: var(--accent); color: var(--accent-foreground); }
-  .step h3 { margin: 2px 0 4px; font-size: 1.1875rem; }
-  .step p { margin: 0; }
-
-  /* The kit's material layer resets every badge to the dark base fill and wins the cascade,
-     so the semantic variants are restored here with the kit's own values. */
-  .ds .ds-badge-safe { background-color: oklch(0.92 0.06 150); color: oklch(0.38 0.11 152); }
-  .ds .ds-badge-danger { background-color: oklch(0.93 0.05 25); color: oklch(0.42 0.17 26); }
-  .ds .ds-badge-unknown { background-color: oklch(0.9 0.085 92); color: oklch(0.38 0.09 75); }
-  .ds .ds-badge { padding: .2rem .7rem; font-size: .75rem; line-height: 1.4; justify-self: start; }
-
-  /* Rule rows */
-  .row { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; align-items: center; padding: 16px 24px; border-top: 1px solid var(--border); }
-  .row:first-child { border-top: 0; }
-  .row p { margin: 0; }
-  .lives { display: flex; align-items: center; gap: 8px; padding: 22px 24px; }
-  .lives .icon { width: 32px; height: 32px; color: var(--destructive); }
-  .lives p { margin: 0 0 0 8px; }
-
-  /* Table and controls */
-  .tbl { overflow-x: auto; }
-  .ds-table { min-width: 420px; font-size: .9375rem; }
-  .ds-table th, .ds-table td { padding: 14px 20px; }
-  .ds-table td:first-child { font-weight: 600; }
-  .ctl { display: grid; grid-template-columns: minmax(0, 8rem) minmax(0, 1fr); gap: 16px; align-items: center; padding: 18px 24px; border-top: 1px solid var(--border); }
-  .ctl:first-child { border-top: 0; }
-  .ctl h3 { margin: 0; font-size: 1.0625rem; }
-  .ctl p { margin: 0; }
-  .keys { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 4px; }
-
-  /* Downloads */
-  .dl { display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 18px 24px; border-top: 1px solid var(--border); }
-  .dl:first-child { border-top: 0; }
-  .dl .icon { width: 36px; height: 36px; color: var(--primary); }
-  .dl h3 { margin: 0; font-size: 1.125rem; }
-  .dl p { margin: 0; }
-  .ds .note { margin: 20px 0 0; }
-
-  .site-footer { border-top: 1px solid var(--border); padding-block: 28px; }
-  .site-footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; }
-  .site-footer p { margin: 0; }
-  .site-footer ul { display: flex; flex-wrap: wrap; gap: 0 20px; list-style: none; margin: 0; padding: 0; }
-  .site-footer a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
-
-  @media (max-width: 860px) {
-    .hero { padding-block: 36px 56px; }
-    .hero .wrap, .split, .split.even { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-    .section { padding-block: 56px; }
-  }
-  @media (max-width: 560px) {
-    .wrap { padding-inline: 16px; }
-    .nav a:not(.ds-btn) { display: none; }
-    .actions .ds-btn { width: 100%; }
-    .row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-    .ctl { grid-template-columns: minmax(0, 1fr); gap: 6px; }
-    .dl { grid-template-columns: 36px minmax(0, 1fr); }
-    .dl .ds-btn { grid-column: 1 / -1; width: 100%; }
-    .step { grid-template-columns: 40px minmax(0, 1fr); padding: 18px; }
-    .step .num { width: 40px; height: 40px; }
-  }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-</style>
+<link rel="stylesheet" href="site.css?v=2">
 </head>
 <body class="ds">
+<a class="skip-link" href="#top">Skip to content</a>
 
 <!-- Phosphor duotone icons (ph), inlined from the design system's icon library -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -203,27 +85,48 @@
         <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub
       </a>
     </nav>
+    <details class="mobile-nav">
+      <summary>Menu</summary>
+      <nav aria-label="Mobile">
+        <a href="#how">How it plays</a>
+        <a href="#levels">Levels</a>
+        <a href="#controls">Controls</a>
+        <a href="#download">Download</a>
+        <a href="https://github.com/IT-Kamianets/math-runner.itkamianets.com">GitHub</a>
+      </nav>
+    </details>
   </div>
 </header>
 
-<main id="top">
+<main id="top" tabindex="-1">
   <section class="hero">
     <div class="wrap">
+    <div class="hero-grid">
       <div>
-        <h1 class="ds-display">Run to the right answer</h1>
+        <h1 class="ds-display">Run to the <span>right answer.</span></h1>
         <p class="lede ds-muted">A 3D street runner where the lane you run into is your answer.</p>
         <div class="actions">
-          <a class="ds-btn ds-btn-primary ds-btn-lg" href="#download">Get the game</a>
+          <a class="ds-btn ds-btn-primary ds-btn-lg" href="#download"><svg class="icon" aria-hidden="true"><use href="#i-windows"/></svg>Download for Windows</a>
           <a class="ds-btn ds-btn-outline ds-btn-lg" href="#how">How it plays</a>
         </div>
+        <p class="availability ds-muted">Free to play · Windows 10 &amp; 11</p>
       </div>
+      <figure class="game-figure">
       <img class="shot" src="images/gameplay.webp" width="1280" height="720" alt="Math Runner gameplay: a runner on a city street faces three answer boards, 26, 28 and 37, under the question 14 + 14 = ?." fetchpriority="high">
+        <figcaption><span>Actual gameplay</span><span>14 + 14. Which lane?</span></figcaption>
+      </figure>
+    </div>
+    <ul class="game-facts" aria-label="Game at a glance">
+      <li><strong>3</strong><span>lanes to choose</span></li>
+      <li><strong>4</strong><span>levels of math</span></li>
+      <li><strong>3</strong><span>lives per run</span></li>
+    </ul>
     </div>
   </section>
 
   <section class="section tint" id="how">
-    <div class="wrap split">
-      <div>
+    <div class="wrap">
+      <div class="section-head how-head">
         <h2>One question, three lanes</h2>
         <p class="sub ds-muted">The runner moves forward on its own. You only decide where to stand.</p>
       </div>
@@ -240,7 +143,7 @@
       <div>
         <h2>Score and lives</h2>
         <p class="sub ds-muted">You start with 3 lives. The run ends when they are gone.</p>
-        <div class="ds-card" style="margin-top:28px">
+        <div class="ds-card content-card">
           <div class="lives" role="img" aria-label="Three lives">
             <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg>
             <svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg>
@@ -256,7 +159,7 @@
       <div id="levels">
         <h2>Four levels of math</h2>
         <p class="sub ds-muted">Wrong answers sit close to the right one, so guessing does not work.</p>
-        <div class="ds-card tbl" style="margin-top:28px">
+        <div class="ds-card tbl content-card">
           <table class="ds-table">
             <thead><tr><th scope="col">Level</th><th scope="col">Operations</th><th scope="col">Numbers</th></tr></thead>
             <tbody>
@@ -272,21 +175,23 @@
   </section>
 
   <section class="section tint" id="controls">
-    <div class="wrap split">
-      <div>
+    <div class="wrap">
+      <div class="section-head">
         <h2>Controls</h2>
         <p class="sub ds-muted">Play with a keyboard or a gamepad.</p>
       </div>
-      <div class="ds-card">
-        <div class="ctl"><h3>Change lane</h3><div><div class="keys"><kbd class="ds-kbd">A</kbd><kbd class="ds-kbd">D</kbd><span class="ds-muted">or</span><kbd class="ds-kbd">←</kbd><kbd class="ds-kbd">→</kbd></div><p class="ds-card-desc">Left stick.</p></div></div>
-        <div class="ctl"><h3>Jump</h3><div><div class="keys"><kbd class="ds-kbd">Space</kbd><span class="ds-muted">or</span><kbd class="ds-kbd">↑</kbd></div><p class="ds-card-desc">South button. Clears low obstacles.</p></div></div>
-        <div class="ctl"><h3>Slide</h3><div><div class="keys"><kbd class="ds-kbd">S</kbd><span class="ds-muted">or</span><kbd class="ds-kbd">↓</kbd></div><p class="ds-card-desc">Passes under overhead beams.</p></div></div>
+      <div class="controls-grid">
+        <div class="ds-card ctl"><h3>Change lane</h3><div><div class="keys"><kbd class="ds-kbd">A</kbd><kbd class="ds-kbd">D</kbd><span class="ds-muted">or</span><kbd class="ds-kbd">←</kbd><kbd class="ds-kbd">→</kbd></div><p class="ds-card-desc">Left stick.</p></div></div>
+        <div class="ds-card ctl"><h3>Jump</h3><div><div class="keys"><kbd class="ds-kbd">Space</kbd><span class="ds-muted">or</span><kbd class="ds-kbd">↑</kbd></div><p class="ds-card-desc">South button. Clears low obstacles.</p></div></div>
+        <div class="ds-card ctl"><h3>Slide</h3><div><div class="keys"><kbd class="ds-kbd">S</kbd><span class="ds-muted">or</span><kbd class="ds-kbd">↓</kbd></div><p class="ds-card-desc">Passes under overhead beams.</p></div></div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="download">
-    <div class="wrap split">
+  <section class="section download-section" id="download">
+    <div class="wrap">
+    <div class="download-panel">
+    <div class="split">
       <div>
         <h2>Download for Windows</h2>
         <p class="sub ds-muted">Free installer for Windows 10 and 11. Every release is listed on GitHub.</p>
@@ -305,6 +210,8 @@
         </div>
       </div>
     </div>
+    </div>
+    </div>
   </section>
 </main>
 
@@ -319,5 +226,20 @@
   </div>
 </footer>
 
+<script>
+  const mobileMenu = document.querySelector('.mobile-nav');
+  mobileMenu.addEventListener('click', (event) => {
+    if (event.target.closest('a')) mobileMenu.open = false;
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && mobileMenu.open) {
+      mobileMenu.open = false;
+      mobileMenu.querySelector('summary').focus();
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (!mobileMenu.contains(event.target)) mobileMenu.open = false;
+  });
+</script>
 </body>
 </html>
