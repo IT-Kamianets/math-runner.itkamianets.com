@@ -13,9 +13,10 @@ using Debug = UnityEngine.Debug;
 namespace MathRunner.Game
 {
     /// <summary>
-    /// Looks for a newer release on GitHub when the game starts and offers to install it. Only the Windows
-    /// player does this; the editor and other platforms skip it. The installer is only taken from this
-    /// repository's releases and, when GitHub reports a SHA-256 for it, only run if the hash matches.
+    /// Looks for a newer release on GitHub when the game starts and offers it. On Windows the banner downloads
+    /// and runs the installer; on Linux and macOS it opens the release page, since those installs are done by
+    /// hand. The editor skips the check. The installer is only taken from this repository's releases and, when
+    /// GitHub reports a SHA-256 for it, only run if the hash matches.
     /// </summary>
     public sealed class UpdateChecker : MonoBehaviour
     {
@@ -25,17 +26,18 @@ namespace MathRunner.Game
         private static readonly Color Accent = new Color(0.16f, 0.82f, 0.95f, 1f);
 
         [Serializable] private class ReleaseAsset { public string name; public string browser_download_url; public string digest; }
-        [Serializable] private class ReleaseInfo { public string tag_name; public bool draft; public bool prerelease; public ReleaseAsset[] assets; }
+        [Serializable] private class ReleaseInfo { public string tag_name; public string html_url; public bool draft; public bool prerelease; public ReleaseAsset[] assets; }
 
         private GameObject _banner;
         private TextMeshProUGUI _message;
         private Button _install, _later;
         private ReleaseAsset _asset;
+        private string _releasePage;
         private bool _busy;
 
         private void Start()
         {
-#if UNITY_STANDALONE_WIN && !UNITY_EDITOR
+#if UNITY_STANDALONE && !UNITY_EDITOR
             if (PlayerPrefs.GetInt("MathRunner.NoUpdateCheck", 0) == 1) return;
             StartCoroutine(Check());
 #endif
@@ -57,6 +59,7 @@ namespace MathRunner.Game
                 if (release == null || release.draft || release.prerelease || release.assets == null) yield break;
                 if (!ReleaseVersion.IsNewer(Application.version, release.tag_name)) yield break;
 
+#if UNITY_STANDALONE_WIN
                 foreach (var asset in release.assets)
                 {
                     if (asset.name != InstallerName) continue;
@@ -66,9 +69,20 @@ namespace MathRunner.Game
                 }
 
                 if (_asset == null) yield break;
+#else
+                if (string.IsNullOrEmpty(release.html_url) ||
+                    !release.html_url.StartsWith($"https://github.com/{Repository}/releases/", StringComparison.Ordinal)) yield break;
+                _releasePage = release.html_url;
+#endif
                 ShowBanner($"Version {release.tag_name.TrimStart('v', 'V')} is available.");
             }
         }
+
+#if UNITY_STANDALONE_WIN
+        private const string InstallLabel = "Update now";
+#else
+        private const string InstallLabel = "Download";
+#endif
 
         private static bool IsTrustedUrl(string url)
         {
@@ -78,6 +92,11 @@ namespace MathRunner.Game
 
         private IEnumerator Install()
         {
+#if !UNITY_STANDALONE_WIN
+            Application.OpenURL(_releasePage);
+            Destroy(_banner);
+            yield break;
+#endif
             _busy = true;
             _install.interactable = false;
             _later.interactable = false;
@@ -177,7 +196,7 @@ namespace MathRunner.Game
             _message.rectTransform.offsetMin = new Vector2(28f, 0f);
             _message.rectTransform.offsetMax = new Vector2(-350f, 0f);
 
-            _install = MakeButton(rect, "Update now", new Vector2(-132f, 0f), new Vector2(190f, 56f), Accent, Color.black,
+            _install = MakeButton(rect, InstallLabel, new Vector2(-132f, 0f), new Vector2(190f, 56f), Accent, Color.black,
                 () => { if (!_busy) StartCoroutine(Install()); });
             _later = MakeButton(rect, "Later", new Vector2(-28f, 0f), new Vector2(90f, 56f), new Color(0.18f, 0.25f, 0.38f), Color.white,
                 () => { if (!_busy) Destroy(_banner); });

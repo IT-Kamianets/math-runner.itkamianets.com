@@ -91,6 +91,21 @@ On start the Windows game asks GitHub for the latest release. If its tag is high
 
 This only works while the release tag is a plain version like `v0.2.0`, the file keeps the name `MathRunner-Setup.exe`, and the tag is higher than the version inside the build.
 
+## Linux and macOS downloads
+
+The same version also ships for Linux and macOS. In Unity Hub, add the modules **Linux Build Support (Mono)** and **Mac Build Support (Mono)** to the editor once.
+
+1. Build both players: **Math Runner > Build Linux** and **Math Runner > Build macOS**, or `Unity.exe -batchmode -quit -projectPath . -executeMethod BuildDesktop.Linux` (and `.MacOS`). They write `Builds/Linux/` and `Builds/macOS/`.
+2. Package them in WSL or Linux: `bash Tools/installer/package-unix.sh 0.2.1`. It writes to `Builds/Installer/`:
+   - `MathRunner-Setup.deb`: Debian and Ubuntu installer (installs to `/opt/math-runner`, adds a menu entry).
+   - `MathRunner-Linux.tar.gz`: any distribution, with `install.sh` (per-user install, `--uninstall` removes it).
+   - `MathRunner-macOS.zip`: the unsigned app for Intel and Apple silicon.
+3. Attach all of them to the same release as `MathRunner-Setup.exe`. Keep these names, because the website links to them.
+
+macOS shows a Gatekeeper warning for the unsigned app. Players right-click it and choose Open the first time. A signed and notarized `.dmg` needs a Mac and an Apple Developer account, so it is not part of this flow.
+
+On Linux and macOS the in-game update banner opens the release page instead of installing.
+
 ## Rules to keep the link working
 
 - **Never rename `MathRunner-Setup.exe`.** The website link depends on this exact name. The version is in the tag and inside the installer, not in the file name.
