@@ -92,11 +92,11 @@ namespace MathRunner.Game
                 for (var k = 0; k < 2; k++)
                 {
                     var pick = Hash(index, side, k);
-                    Place(Buildings[pick % Buildings.Length], t, new Vector3(sign * 7.6f, 0f, z0 + 3f + 6f * k), yaw);
+                    Place(Buildings[pick % Buildings.Length], t, new Vector3(sign * 8.6f, 0f, z0 + 3f + 6f * k), yaw);
                 }
 
                 var far = Hash(index, side, 7);
-                Place(Skyline[far % Skyline.Length], t, new Vector3(sign * 14f, 0f, z0 + 6f), yaw);
+                Place(Skyline[far % Skyline.Length], t, new Vector3(sign * 16f, 0f, z0 + 6f), yaw);
 
                 Place("12_street_lamp", t, new Vector3(sign * 4.6f, 0.36f, z0 + 2f), yaw);
                 var dressing = Hash(index, side, 3) % 5;

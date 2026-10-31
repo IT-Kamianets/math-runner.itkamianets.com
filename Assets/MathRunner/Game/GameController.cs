@@ -117,6 +117,7 @@ namespace MathRunner.Game
             _hud.ResumeClicked += () => _fsm.TryMoveTo(GameState.Running);
             _hud.TierClicked += SelectTier;
             _hud.QuitClicked += QuitGame;
+            new GameObject("Updater").AddComponent<UpdateChecker>();
 
             _fsm.Changed += OnStateChanged;
             EngineInput.Default.SchemeChanged += _ => RefreshHint();

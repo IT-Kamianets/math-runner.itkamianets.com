@@ -21,8 +21,10 @@ Use semantic versions: `0.1.0` for the first public build, then `0.1.1` for fixe
 
 ### 2. Build the game in Unity
 
-1. File > Build Profiles, choose **Windows**, architecture **x86-64**.
-2. Click **Build**, and choose the folder `Builds/Windows/` inside the repo. Create it if it does not exist.
+Set Project Settings > Player > Version to the release version first (for example `0.2.0`). The in-game updater compares it with the latest GitHub release tag.
+
+1. Run **Math Runner > Build Windows** in Unity (or `Unity.exe -batchmode -quit -projectPath . -executeMethod BuildWindows.Run`). It writes `Builds/Windows/` for you.
+2. Or build by hand: File > Build Profiles, choose **Windows**, architecture **x86-64**, and build into `Builds/Windows/`.
 3. Check that `Builds/Windows/MathRunner.exe` exists next to `MathRunner_Data/` and `UnityPlayer.dll`.
 4. Run it once by double-clicking. If it does not start, do not release it.
 
@@ -82,6 +84,12 @@ https://github.com/IT-Kamianets/math-runner.itkamianets.com/releases/latest/down
 ```
 
 Open it in a private browser window. It must start the download. If it shows a 404, check that the release is published (not a draft) and that the attached file is named exactly `MathRunner-Setup.exe`.
+
+## Automatic updates
+
+On start the Windows game asks GitHub for the latest release. If its tag is higher than the game's version, a banner offers **Update now**. The game downloads `MathRunner-Setup.exe` from this repository's release, checks its SHA-256 when GitHub provides one, then runs it with `/SILENT`. Windows asks for administrator permission, the installer replaces the game in place (same `AppId`) and starts it again. Offline, drafts and pre-releases are ignored. Players can turn the check off by setting the `MathRunner.NoUpdateCheck` PlayerPrefs key to 1.
+
+This only works while the release tag is a plain version like `v0.2.0`, the file keeps the name `MathRunner-Setup.exe`, and the tag is higher than the version inside the build.
 
 ## Rules to keep the link working
 

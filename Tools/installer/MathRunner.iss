@@ -31,6 +31,11 @@ SolidCompression=yes
 WizardStyle=modern
 UninstallDisplayIcon={app}\{#AppExe}
 LicenseFile=..\..\LICENSE
+; In-game updater: it runs this file with /SILENT. Same AppId replaces the old install in place.
+CloseApplications=yes
+RestartApplications=no
+UsePreviousTasks=yes
+UsePreviousLanguage=yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -50,3 +55,5 @@ Name: "{autodesktop}\{#AppName}"; Filename: "{app}\{#AppExe}"; Tasks: desktopico
 
 [Run]
 Filename: "{app}\{#AppExe}"; Description: "{cm:LaunchProgram,{#AppName}}"; Flags: nowait postinstall skipifsilent
+; A silent update (started by the game) has no finish page, so start the game again here.
+Filename: "{app}\{#AppExe}"; Flags: nowait; Check: WizardSilent

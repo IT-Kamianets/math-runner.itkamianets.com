@@ -21,6 +21,7 @@ public static class GameSceneBuilder
         AssetDatabase.SaveAssets();
 
         EditorApplication.ExecuteMenuItem("Math Runner/Art/Create Starter Prefabs");
+        MeshyArt.CreatePrefabs(); // replaces the starter prefabs that have a Meshy model
         AssetDatabase.Refresh();
 
         var scene = EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
