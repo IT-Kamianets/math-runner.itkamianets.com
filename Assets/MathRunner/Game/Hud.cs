@@ -22,6 +22,7 @@ namespace MathRunner.Game
         public event Action RetryClicked;
         public event Action MenuClicked;
         public event Action ResumeClicked;
+        public event Action QuitClicked;
         public event Action<int> TierClicked;
 
         private GameObject _hudGroup, _menu, _countdown, _paused, _gameOver;
@@ -161,6 +162,14 @@ namespace MathRunner.Game
             var play = MakeButton(rect, "PLAY", new Vector2(460, 120), 70, () => PlayClicked?.Invoke());
             play.GetComponent<Image>().color = Good;
             Anchor((RectTransform)play.transform, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0, -130), new Vector2(460, 120));
+
+            // A browser tab cannot be closed by the game, so WebGL builds have no Exit button.
+            if (Application.platform != RuntimePlatform.WebGLPlayer)
+            {
+                var exit = MakeButton(rect, "EXIT", new Vector2(300, 90), 46, () => QuitClicked?.Invoke());
+                exit.GetComponent<Image>().color = Bad;
+                Anchor((RectTransform)exit.transform, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0, -270), new Vector2(300, 90));
+            }
 
             _hint = Label("Hint", rect, string.Empty, 34, new Color(0.8f, 0.88f, 1f), TextAlignmentOptions.Center);
             Anchor(_hint.rectTransform, new Vector2(0.5f, 0), new Vector2(0.5f, 0), new Vector2(0, 90), new Vector2(1700, 120));

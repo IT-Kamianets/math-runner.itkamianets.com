@@ -19,17 +19,17 @@
 <meta property="og:title" content="Math Runner: run to the right answer">
 <meta property="og:description" content="A 3D street runner where the lane you run into is your answer. Four levels, from easy sums to division.">
 <meta property="og:url" content="https://math-runner.itkamianets.com/">
-<meta property="og:image" content="https://math-runner.itkamianets.com/og-image.png">
-<meta property="og:image:type" content="image/png">
+<meta property="og:image" content="https://math-runner.itkamianets.com/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Math Runner: the question 12 + 15 above three answer boards, 15, 27 and 13, with the runner approaching.">
+<meta property="og:image:alt" content="Math Runner gameplay: a runner on a city street faces three answer boards, 26, 28 and 37, under the question 14 + 14 = ?.">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Math Runner: run to the right answer">
-<meta name="twitter:description" content="A 3D street runner where the lane you run into is your answer. Four levels, from easy sums to division.">
-<meta name="twitter:image" content="https://math-runner.itkamianets.com/og-image.png">
-<meta name="twitter:image:alt" content="Math Runner: the question 12 + 15 above three answer boards, 15, 27 and 13, with the runner approaching.">
+<meta name="twitter:description" content="A 3D street runner where every gate is a math question. Steer into the lane with the correct answer.">
+<meta name="twitter:image" content="https://math-runner.itkamianets.com/og-image.jpg">
+<meta name="twitter:image:alt" content="Math Runner gameplay: a runner on a city street faces three answer boards, 26, 28 and 37, under the question 14 + 14 = ?.">
 
 <script type="application/ld+json">
 {
@@ -37,8 +37,8 @@
   "@type": "VideoGame",
   "name": "Math Runner",
   "url": "https://math-runner.itkamianets.com/",
-  "image": "https://math-runner.itkamianets.com/og-image.png",
-  "description": "A 3D street runner where the lane you run into is your answer. Four levels, from easy sums to division.",
+  "image": "https://math-runner.itkamianets.com/og-image.jpg",
+  "description": "A 3D endless runner where every gate is a math question. Steer into the lane with the correct answer.",
   "genre": ["Endless runner", "Educational"],
   "gamePlatform": "Windows",
   "operatingSystem": "Windows 10, Windows 11",
@@ -86,8 +86,25 @@
   .ds .lede { margin: 20px 0 0; max-width: 32rem; font-size: 1.1875rem; line-height: 1.55; }
   .actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
 
-  /* Hero image */
-  .hero-img { display: block; width: 100%; height: auto; aspect-ratio: 1200 / 630; border-radius: var(--radius-2xl, 1rem); border: 1px solid var(--border); box-shadow: var(--shadow-lg); }
+  /* Game illustration */
+  .shot { display: block; width: 100%; height: auto; border-radius: var(--radius-2xl, 1rem); border: 1px solid var(--border); box-shadow: var(--shadow-lg); }
+  .scene { position: relative; aspect-ratio: 4 / 3.2; overflow: hidden; border-radius: var(--radius-2xl, 1rem); border: 1px solid var(--border); box-shadow: var(--shadow-lg);
+    background: linear-gradient(180deg, #8fd3ff 0%, #d6efff 36%, #b8a79f 36%, #94776d 100%); }
+  .scene .bld { position: absolute; top: 12%; height: 46%; border-radius: 6px; }
+  .scene .bld.l { left: 3%; width: 13%; background: linear-gradient(180deg, #e5484d, #b3262b); transform: skewY(7deg); }
+  .scene .bld.l2 { left: 17%; width: 9%; top: 22%; height: 36%; background: linear-gradient(180deg, #f5b942, #d58f12); transform: skewY(5deg); }
+  .scene .bld.r { right: 3%; width: 13%; background: linear-gradient(180deg, #1fa5a8, #0f7478); transform: skewY(-7deg); }
+  .scene .bld.r2 { right: 17%; width: 9%; top: 22%; height: 36%; background: linear-gradient(180deg, #8a6df0, #5b3fc9); transform: skewY(-5deg); }
+  .scene .lane { position: absolute; top: 36%; bottom: 0; width: 3px; background: rgba(255,255,255,.55); }
+  .scene .lane.a { left: 36%; transform: skewX(-9deg); }
+  .scene .lane.b { left: 64%; transform: skewX(9deg); }
+  .scene .q { position: absolute; top: 8%; left: 50%; transform: translateX(-50%); white-space: nowrap; font-weight: 900; font-size: clamp(1.75rem, 4.6vw, 3rem); color: #ffcf33; -webkit-text-stroke: 2px #4a2b00; paint-order: stroke fill; }
+  .scene .boards { position: absolute; left: 22%; right: 22%; top: 30%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5%; }
+  .scene .board { display: grid; place-items: center; aspect-ratio: 1 / .8; border-radius: 10px; background: #19d3ef; color: #fff; font-weight: 900; font-size: clamp(1.1rem, 3.2vw, 2.1rem); -webkit-text-stroke: 1.5px #0a4a57; paint-order: stroke fill; box-shadow: 0 5px 0 #0f93a8; }
+  .scene .runner { position: absolute; left: 50%; bottom: 6%; transform: translateX(-50%); width: 12%; aspect-ratio: 1 / 2; }
+  .runner .head { position: absolute; top: 0; left: 16%; width: 68%; aspect-ratio: 1; border-radius: 50%; background: #7a5a3a; }
+  .runner .body { position: absolute; top: 36%; left: 8%; width: 84%; height: 34%; border-radius: 12px 12px 6px 6px; background: #8a8f98; }
+  .runner .legs { position: absolute; top: 66%; left: 16%; width: 68%; height: 34%; border-radius: 4px 4px 10px 10px; background: #2f4f82; }
 
   /* Sections */
   .section { padding-block: 80px; }
@@ -200,7 +217,7 @@
           <a class="ds-btn ds-btn-outline ds-btn-lg" href="#how">How it plays</a>
         </div>
       </div>
-      <img class="hero-img" src="og-image.png" width="1200" height="630" fetchpriority="high" alt="Math Runner: the question 12 + 15 above three answer boards, 15, 27 and 13, with the runner approaching.">
+      <img class="shot" src="images/gameplay.webp" width="1280" height="720" alt="Math Runner gameplay: a runner on a city street faces three answer boards, 26, 28 and 37, under the question 14 + 14 = ?." fetchpriority="high">
     </div>
   </section>
 
