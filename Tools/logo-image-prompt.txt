@@ -1,0 +1,6 @@
+Generated with the built-in image_gen tool.
+Square source: docs/images/math-runner-logo.png
+Browser formats exported with Tools/export-logo-icons.ps1.
+
+Final prompt:
+Create a single square 1024x1024 brand logo / app icon for Math Runner, a friendly 3D educational endless running game. One strong centered symbol: a bold white running sneaker angled upward toward the right, with a clearly readable chunky golden-yellow plus sign above its heel and two short cyan speed strokes behind it. Solid royal blue #1e66ff square background with very subtle darker blue depth toward bottom. Friendly rounded geometric design, clean professional stylized 3D with extremely restrained beveling, mostly flat color, crisp high contrast. Sneaker is an iconic simple silhouette with at most two broad details, no intricate laces. Symbol fills about 75 percent of square, generous safe margin. Logo must remain recognizable at 16 by 16 pixels. Match bright blue cyan and gold Math Runner game branding. No letters, no words, no numbers, no border, no mockup, no city scene, no character, no extra symbols. Perfectly square opaque canvas, full bleed blue background with square outer corners. This same image will be used as the square logo and resized as the favicon.
