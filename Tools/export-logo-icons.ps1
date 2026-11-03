@@ -1,7 +1,7 @@
 # Export browser icon formats from the generated logo; no creative changes.
 Add-Type -AssemblyName System.Drawing
 $docsPath = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../docs'))
-$source = [Drawing.Image]::FromFile((Join-Path $docsPath 'images/math-runner-logo.png'))
+$source = [Drawing.Image]::FromFile((Join-Path $docsPath 'logo.png'))
 function Export-PngBytes([int]$size) {
     $bitmap = New-Object Drawing.Bitmap($size, $size)
     $graphics = [Drawing.Graphics]::FromImage($bitmap)

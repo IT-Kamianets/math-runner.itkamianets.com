@@ -1,5 +1,5 @@
 Generated with the built-in image_gen tool.
-Square source: docs/images/math-runner-logo.png
+Square source: docs/logo.png
 Browser formats exported with Tools/export-logo-icons.ps1.
 
 Final prompt:
