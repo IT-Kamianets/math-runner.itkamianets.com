@@ -26,7 +26,7 @@ public static class BuildMobile
     private static void Android(string folder, string file, bool bundle)
     {
         EditorUserBuildSettings.buildAppBundle = bundle;
-        PlayerSettings.SetScriptingBackend(UnityEditor.Build.NamedBuildTarget.Android, UnityEditor.Build.ScriptingImplementation.IL2CPP);
+        PlayerSettings.SetScriptingBackend(UnityEditor.Build.NamedBuildTarget.Android, ScriptingImplementation.IL2CPP);
         PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
         Build(folder, file, BuildTarget.Android);
     }
