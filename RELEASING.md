@@ -132,3 +132,11 @@ Signing removes the warning, but a certificate costs money and is not needed for
 ## Later: automate it
 
 Once the game builds reliably, a GitHub Actions workflow can build, package and attach the installer on every tag. That needs a Unity license stored as a repo secret, so it is worth doing only after the manual flow works.
+
+## Android and iOS
+
+In Unity Hub, add the modules **Android Build Support** (with OpenJDK and Android SDK & NDK Tools) and **iOS Build Support** to the editor once. The application id is `com.itkamianets.mathrunner` on both; the game runs in landscape.
+
+- **Android:** **Math Runner > Build Android APK** (or **AAB** for the Play Store), or `Unity.exe -batchmode -quit -projectPath . -executeMethod BuildMobile.AndroidApk` (`.AndroidBundle`). Writes `Builds/Android/MathRunner.apk`. Attach the `.apk` to the GitHub release and the in-game updater opens it. Set a keystore in Player Settings before a store release.
+- **iOS:** **Math Runner > Export iOS Xcode project** (`-executeMethod BuildMobile.IOS`) writes `Builds/iOS/`. Open it in Xcode on a Mac, set the signing team, then archive.
+- **Controls on a phone:** swipe left or right to change lane, up to jump, down to slide, and tap the pause button (top right). Swipes are read through the engine's UI pointer actions, so they work the same with a mouse.

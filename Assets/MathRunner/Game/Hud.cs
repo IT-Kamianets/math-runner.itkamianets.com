@@ -22,12 +22,14 @@ namespace MathRunner.Game
         public event Action RetryClicked;
         public event Action MenuClicked;
         public event Action ResumeClicked;
+        public event Action PauseClicked;
         public event Action QuitClicked;
         public event Action<int> TierClicked;
 
         private GameObject _hudGroup, _menu, _countdown, _paused, _gameOver;
         private TextMeshProUGUI _score, _lives, _streak, _question, _feedback, _countdownText, _overStats, _hint;
         private Button[] _tierButtons;
+        private GameObject _pauseButton;
         private float _feedbackLeft;
 
         public void Build(string[] tierNames)
@@ -96,6 +98,12 @@ namespace MathRunner.Game
 
         public void SetControlsHint(string text) => _hint.text = text;
 
+        /// <summary>The on-screen pause button: touch screens have no Esc key or Start button.</summary>
+        public void SetTouchControls(bool visible)
+        {
+            if (_pauseButton != null) _pauseButton.SetActive(visible);
+        }
+
         // ---- Live values ---------------------------------------------------------------
 
         public void SetScore(int value) => _score.text = "SCORE  " + value;
@@ -132,6 +140,11 @@ namespace MathRunner.Game
             Anchor(panel, new Vector2(0.5f, 1), new Vector2(0.5f, 1), new Vector2(0, -30), new Vector2(760, 150));
             _question = Label("Question", panel, "? + ?  = ?", 96, Color.white, TextAlignmentOptions.Center);
             Stretch(_question.rectTransform);
+
+            var pause = MakeButton(rect, "II", new Vector2(130, 110), 64, () => PauseClicked?.Invoke());
+            Anchor((RectTransform)pause.transform, new Vector2(1, 1), new Vector2(1, 1), new Vector2(-40, -120), new Vector2(130, 110));
+            _pauseButton = pause.gameObject;
+            _pauseButton.SetActive(false);
 
             _feedback = Label("Feedback", rect, string.Empty, 110, Good, TextAlignmentOptions.Center);
             Anchor(_feedback.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0, 120), new Vector2(1200, 160));

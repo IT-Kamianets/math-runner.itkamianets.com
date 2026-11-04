@@ -6,6 +6,7 @@ using MathRunner.Core.Run;
 using MathRunner.Core.Track;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace MathRunner.Game
 {
@@ -115,12 +116,14 @@ namespace MathRunner.Game
             _hud.RetryClicked += StartRun;
             _hud.MenuClicked += () => _fsm.TryMoveTo(GameState.Menu);
             _hud.ResumeClicked += () => _fsm.TryMoveTo(GameState.Running);
+            _hud.PauseClicked += () => { if (_fsm.State == GameState.Running) _fsm.TryMoveTo(GameState.Paused); };
             _hud.TierClicked += SelectTier;
             _hud.QuitClicked += QuitGame;
             new GameObject("Updater").AddComponent<UpdateChecker>();
 
             _fsm.Changed += OnStateChanged;
             EngineInput.Default.SchemeChanged += _ => RefreshHint();
+            _hud.SetTouchControls(Application.isMobilePlatform);
             RefreshHint();
             ResetWorld();
             _hud.ShowMenu(_tierIndex);
@@ -249,7 +252,8 @@ namespace MathRunner.Game
             if (input.UI.Click.WasPressedThisFrame())
             {
                 _pressPoint = input.UI.Point.ReadValue<Vector2>();
-                _swipeDone = false;
+                // A finger that lands on a button (pause, resume, tiers) taps it; it never swipes.
+                _swipeDone = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
             }
             else if (input.UI.Click.IsPressed() && !_swipeDone)
             {
@@ -278,12 +282,15 @@ namespace MathRunner.Game
             switch (EngineInput.Default.Scheme)
             {
                 case InputScheme.Touch:
+                    _hud.SetTouchControls(true);
                     _hud.SetControlsHint("Swipe left or right: change lane      Swipe up: jump      Swipe down: slide");
                     break;
                 case InputScheme.Gamepad:
+                    _hud.SetTouchControls(Application.isMobilePlatform);
                     _hud.SetControlsHint("Left stick: lane, jump, slide      Start: pause");
                     break;
                 default:
+                    _hud.SetTouchControls(Application.isMobilePlatform);
                     _hud.SetControlsHint("A / D or arrows: change lane      W / Space: jump      S: slide      Esc: pause\nLeft and right on the menu pick the difficulty, Enter starts");
                     break;
             }
