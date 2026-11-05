@@ -41,6 +41,15 @@
       },
       "hash": "51ca9abf707f796748c684b83336e1be9bcb4d8d"
     },
+    "com.itkamianets.3d-unity-assetra": {
+      "version": "file:3d-unity-assetra",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.2",
+        "com.unity.modules.unitywebrequest": "1.0.0"
+      }
+    },
     "com.itkamianets.3d-unity-assets": {
       "version": "https://github.com/IT-Kamianets/3d-unity-assets.git",
       "depth": 0,
