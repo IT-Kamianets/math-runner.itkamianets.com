@@ -7,17 +7,11 @@ on:
 
 jobs:
     fastlane:
-        runs-on: self-hosted # Ensures it runs on your Mac runner
-        timeout-minutes: 180 # Unity apps import and build for both platforms
+        # The Mac runner belongs to WebArtWork, so ask WebArtWork/fastlane to build this app.
+        # Needs the FASTLANE_DISPATCH_TOKEN secret (org or repository secret)
+        runs-on: ubuntu-latest
         steps:
-            - name: Change directory to Fastlane and Run Setup
-              run: |
-                  cd "${FASTLANE_DIR:-../../../../fastlane}"
-                  git pull origin master
-                  unset GEM_HOME GEM_PATH
-                  export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
-                  export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
-                  export JAVA_HOME=$(/usr/libexec/java_home -v 21)
-                  export ANDROID_HOME=${ANDROID_HOME:-$HOME/Library/Android/sdk}
-                  export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
-                  bundle exec fastlane setup_app app_name:mathRunner
+            - name: Trigger fastlane build
+              env:
+                  GH_TOKEN: ${{ secrets.FASTLANE_DISPATCH_TOKEN }}
+              run: gh api --method POST repos/WebArtWork/fastlane/actions/workflows/build-app.yml/dispatches -f ref=master -f "inputs[app_name]=mathRunner"
