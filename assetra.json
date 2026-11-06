@@ -1,0 +1,1380 @@
+{
+  "schemaVersion": "1.0.0",
+  "libraryId": "math-runner",
+  "units": "meters",
+  "metadata": {
+    "tags": [
+      "assetra"
+    ],
+    "properties": {
+      "assetra": {
+        "format": 1,
+        "project": "math-runner",
+        "name": "Math Runner",
+        "modelsDir": "Assets/MathRunner/Art/Models",
+        "brief": "models.md"
+      }
+    }
+  },
+  "assets": [
+    {
+      "id": "characters/runner-kid",
+      "name": "Runner kid",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/01_runner_kid.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.745,
+          "y": 0,
+          "z": -0.239
+        },
+        "max": {
+          "x": 0.745,
+          "y": 1.8,
+          "z": 0.239
+        }
+      },
+      "placeholder": {
+        "shape": "capsule",
+        "color": {
+          "r": 0.35,
+          "g": 0.55,
+          "b": 0.85
+        }
+      },
+      "metadata": {
+        "tags": [
+          "character",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 15000,
+          "triangles": 664,
+          "starter": true,
+          "number": 1,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/runner_kid.fbx"
+        }
+      }
+    },
+    {
+      "id": "characters/runner-skin-teal",
+      "name": "Runner skin teal",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/02_runner_skin_teal.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.745,
+          "y": 0,
+          "z": -0.239
+        },
+        "max": {
+          "x": 0.745,
+          "y": 1.8,
+          "z": 0.239
+        }
+      },
+      "placeholder": {
+        "shape": "capsule",
+        "color": {
+          "r": 0.35,
+          "g": 0.55,
+          "b": 0.85
+        }
+      },
+      "metadata": {
+        "tags": [
+          "character",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 15000,
+          "triangles": 664,
+          "starter": true,
+          "number": 2
+        }
+      }
+    },
+    {
+      "id": "characters/runner-skin-red",
+      "name": "Runner skin red",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/03_runner_skin_red.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.745,
+          "y": 0,
+          "z": -0.239
+        },
+        "max": {
+          "x": 0.745,
+          "y": 1.8,
+          "z": 0.239
+        }
+      },
+      "placeholder": {
+        "shape": "capsule",
+        "color": {
+          "r": 0.35,
+          "g": 0.55,
+          "b": 0.85
+        }
+      },
+      "metadata": {
+        "tags": [
+          "character",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 15000,
+          "triangles": 664,
+          "starter": true,
+          "number": 3
+        }
+      }
+    },
+    {
+      "id": "buildings/shop-red",
+      "name": "Shop red",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/04_shop_red.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -3,
+          "y": 0,
+          "z": -2.348
+        },
+        "max": {
+          "x": 3,
+          "y": 6.56,
+          "z": 2.348
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.75,
+          "g": 0.65,
+          "b": 0.55
+        }
+      },
+      "metadata": {
+        "tags": [
+          "building",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 5000,
+          "triangles": 528,
+          "starter": true,
+          "number": 4,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/shop_market.fbx"
+        }
+      }
+    },
+    {
+      "id": "buildings/shop-teal",
+      "name": "Shop teal",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/05_shop_teal.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -3,
+          "y": 0,
+          "z": -2.348
+        },
+        "max": {
+          "x": 3,
+          "y": 6.56,
+          "z": 2.348
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.75,
+          "g": 0.65,
+          "b": 0.55
+        }
+      },
+      "metadata": {
+        "tags": [
+          "building",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 5000,
+          "triangles": 528,
+          "starter": true,
+          "number": 5
+        }
+      }
+    },
+    {
+      "id": "buildings/shop-yellow",
+      "name": "Shop yellow",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/06_shop_yellow.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -3,
+          "y": 0,
+          "z": -2.348
+        },
+        "max": {
+          "x": 3,
+          "y": 6.56,
+          "z": 2.348
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.75,
+          "g": 0.65,
+          "b": 0.55
+        }
+      },
+      "metadata": {
+        "tags": [
+          "building",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 5000,
+          "triangles": 528,
+          "starter": true,
+          "number": 6
+        }
+      }
+    },
+    {
+      "id": "buildings/apartment-tall",
+      "name": "Apartment tall",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/07_apartment_tall.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -3,
+          "y": 0,
+          "z": -2.197
+        },
+        "max": {
+          "x": 3,
+          "y": 12.2,
+          "z": 2.197
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.75,
+          "g": 0.65,
+          "b": 0.55
+        }
+      },
+      "metadata": {
+        "tags": [
+          "building",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 5000,
+          "triangles": 1824,
+          "starter": true,
+          "number": 7,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/apartment_tall.fbx"
+        }
+      }
+    },
+    {
+      "id": "buildings/apartment-wide",
+      "name": "Apartment wide",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/08_apartment_wide.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -3,
+          "y": 0,
+          "z": -2.197
+        },
+        "max": {
+          "x": 3,
+          "y": 8.8,
+          "z": 2.197
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.75,
+          "g": 0.65,
+          "b": 0.55
+        }
+      },
+      "metadata": {
+        "tags": [
+          "building",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 5000,
+          "triangles": 1248,
+          "starter": true,
+          "number": 8,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/building_wide.fbx"
+        }
+      }
+    },
+    {
+      "id": "buildings/corner-building",
+      "name": "Corner building",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/09_corner_building.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -3,
+          "y": 0,
+          "z": -2.033
+        },
+        "max": {
+          "x": 3,
+          "y": 7.1,
+          "z": 2.033
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.75,
+          "g": 0.65,
+          "b": 0.55
+        }
+      },
+      "metadata": {
+        "tags": [
+          "building",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 5000,
+          "triangles": 492,
+          "starter": true,
+          "number": 9,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/building_corner.fbx"
+        }
+      }
+    },
+    {
+      "id": "buildings/skyline-a",
+      "name": "Skyline a",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/10_skyline_a.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -3,
+          "y": 0,
+          "z": -2.033
+        },
+        "max": {
+          "x": 3,
+          "y": 13.36,
+          "z": 2.033
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.75,
+          "g": 0.65,
+          "b": 0.55
+        }
+      },
+      "metadata": {
+        "tags": [
+          "building",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 1500,
+          "triangles": 804,
+          "starter": true,
+          "number": 10
+        }
+      }
+    },
+    {
+      "id": "buildings/skyline-b",
+      "name": "Skyline b",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/11_skyline_b.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -3,
+          "y": 0,
+          "z": -2.033
+        },
+        "max": {
+          "x": 3,
+          "y": 16.76,
+          "z": 2.033
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.75,
+          "g": 0.65,
+          "b": 0.55
+        }
+      },
+      "metadata": {
+        "tags": [
+          "building",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 1500,
+          "triangles": 1020,
+          "starter": true,
+          "number": 11
+        }
+      }
+    },
+    {
+      "id": "props/street-lamp",
+      "name": "Street lamp",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/12_street_lamp.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.573,
+          "y": 0,
+          "z": -0.209
+        },
+        "max": {
+          "x": 0.573,
+          "y": 3.56,
+          "z": 0.209
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.4,
+          "g": 0.65,
+          "b": 0.4
+        }
+      },
+      "metadata": {
+        "tags": [
+          "prop",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 800,
+          "triangles": 96,
+          "starter": true,
+          "number": 12,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/street_lamp.fbx"
+        }
+      }
+    },
+    {
+      "id": "props/tree-round",
+      "name": "Tree round",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/13_tree_round.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -1.134,
+          "y": 0,
+          "z": -0.951
+        },
+        "max": {
+          "x": 1.134,
+          "y": 3.5,
+          "z": 0.951
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.4,
+          "g": 0.65,
+          "b": 0.4
+        }
+      },
+      "metadata": {
+        "tags": [
+          "prop",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 1500,
+          "triangles": 200,
+          "starter": true,
+          "number": 13,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/tree_round.fbx"
+        }
+      }
+    },
+    {
+      "id": "props/bush",
+      "name": "Bush",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/14_bush.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.734,
+          "y": 0,
+          "z": -0.497
+        },
+        "max": {
+          "x": 0.734,
+          "y": 0.9,
+          "z": 0.497
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.4,
+          "g": 0.65,
+          "b": 0.4
+        }
+      },
+      "metadata": {
+        "tags": [
+          "prop",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 800,
+          "triangles": 160,
+          "starter": true,
+          "number": 14
+        }
+      }
+    },
+    {
+      "id": "props/bench",
+      "name": "Bench",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/15_bench.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.85,
+          "y": 0,
+          "z": -0.305
+        },
+        "max": {
+          "x": 0.85,
+          "y": 1.25,
+          "z": 0.305
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.4,
+          "g": 0.65,
+          "b": 0.4
+        }
+      },
+      "metadata": {
+        "tags": [
+          "prop",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 800,
+          "triangles": 144,
+          "starter": true,
+          "number": 15,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/bench.fbx"
+        }
+      }
+    },
+    {
+      "id": "props/trash-bin",
+      "name": "Trash bin",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/16_trash_bin.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.35,
+          "y": 0,
+          "z": -0.334
+        },
+        "max": {
+          "x": 0.35,
+          "y": 1.02,
+          "z": 0.334
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.4,
+          "g": 0.65,
+          "b": 0.4
+        }
+      },
+      "metadata": {
+        "tags": [
+          "prop",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 500,
+          "triangles": 84,
+          "starter": true,
+          "number": 16
+        }
+      }
+    },
+    {
+      "id": "props/mailbox",
+      "name": "Mailbox",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/17_mailbox.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.313,
+          "y": 0,
+          "z": -0.209
+        },
+        "max": {
+          "x": 0.313,
+          "y": 1.33,
+          "z": 0.209
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.4,
+          "g": 0.65,
+          "b": 0.4
+        }
+      },
+      "metadata": {
+        "tags": [
+          "prop",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 500,
+          "triangles": 48,
+          "starter": true,
+          "number": 17
+        }
+      }
+    },
+    {
+      "id": "props/bus-shelter",
+      "name": "Bus shelter",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/18_bus_shelter.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -1.5,
+          "y": 0,
+          "z": -0.65
+        },
+        "max": {
+          "x": 1.5,
+          "y": 2.29,
+          "z": 0.65
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.4,
+          "g": 0.65,
+          "b": 0.4
+        }
+      },
+      "metadata": {
+        "tags": [
+          "prop",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 1500,
+          "triangles": 108,
+          "starter": true,
+          "number": 18,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/bus_shelter.fbx"
+        }
+      }
+    },
+    {
+      "id": "props/flower-planter",
+      "name": "Flower planter",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/19_flower_planter.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.5,
+          "y": 0,
+          "z": -0.3
+        },
+        "max": {
+          "x": 0.5,
+          "y": 0.91,
+          "z": 0.3
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.4,
+          "g": 0.65,
+          "b": 0.4
+        }
+      },
+      "metadata": {
+        "tags": [
+          "prop",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 600,
+          "triangles": 156,
+          "starter": true,
+          "number": 19
+        }
+      }
+    },
+    {
+      "id": "props/parked-car",
+      "name": "Parked car",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/20_parked_car.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.962,
+          "y": 0,
+          "z": -1.595
+        },
+        "max": {
+          "x": 0.962,
+          "y": 1.65,
+          "z": 1.595
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.4,
+          "g": 0.65,
+          "b": 0.4
+        }
+      },
+      "metadata": {
+        "tags": [
+          "prop",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 2000,
+          "triangles": 452,
+          "starter": true,
+          "number": 20
+        }
+      }
+    },
+    {
+      "id": "props/parked-bus",
+      "name": "Parked bus",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/21_parked_bus.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.962,
+          "y": 0,
+          "z": -2.945
+        },
+        "max": {
+          "x": 0.962,
+          "y": 1.65,
+          "z": 2.945
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.4,
+          "g": 0.65,
+          "b": 0.4
+        }
+      },
+      "metadata": {
+        "tags": [
+          "prop",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 2500,
+          "triangles": 524,
+          "starter": true,
+          "number": 21
+        }
+      }
+    },
+    {
+      "id": "props/hydrant",
+      "name": "Hydrant",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/22_hydrant.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.3,
+          "y": 0,
+          "z": -0.25
+        },
+        "max": {
+          "x": 0.3,
+          "y": 0.9,
+          "z": 0.25
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.4,
+          "g": 0.65,
+          "b": 0.4
+        }
+      },
+      "metadata": {
+        "tags": [
+          "prop",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 400,
+          "triangles": 136,
+          "starter": true,
+          "number": 22
+        }
+      }
+    },
+    {
+      "id": "obstacles/striped-barrier",
+      "name": "Striped barrier",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/23_striped_barrier.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -1,
+          "y": 0,
+          "z": -0.3
+        },
+        "max": {
+          "x": 1,
+          "y": 1.04,
+          "z": 0.3
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.95,
+          "g": 0.5,
+          "b": 0.15
+        }
+      },
+      "metadata": {
+        "tags": [
+          "obstacle",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 600,
+          "triangles": 144,
+          "starter": true,
+          "number": 23,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/barrier_striped.fbx"
+        }
+      }
+    },
+    {
+      "id": "obstacles/cone-cluster",
+      "name": "Cone cluster",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/24_cone_cluster.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.66,
+          "y": 0,
+          "z": -0.5
+        },
+        "max": {
+          "x": 0.66,
+          "y": 0.58,
+          "z": 0.5
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.95,
+          "g": 0.5,
+          "b": 0.15
+        }
+      },
+      "metadata": {
+        "tags": [
+          "obstacle",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 500,
+          "triangles": 288,
+          "starter": true,
+          "number": 24,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/cone_cluster.fbx"
+        }
+      }
+    },
+    {
+      "id": "obstacles/crate-stack",
+      "name": "Crate stack",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/25_crate_stack.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.78,
+          "y": 0,
+          "z": -0.427
+        },
+        "max": {
+          "x": 0.78,
+          "y": 1.56,
+          "z": 0.427
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.95,
+          "g": 0.5,
+          "b": 0.15
+        }
+      },
+      "metadata": {
+        "tags": [
+          "obstacle",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 800,
+          "triangles": 216,
+          "starter": true,
+          "number": 25,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/crate_stack.fbx"
+        }
+      }
+    },
+    {
+      "id": "obstacles/low-fence",
+      "name": "Low fence",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/26_low_fence.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.9,
+          "y": 0,
+          "z": -0.09
+        },
+        "max": {
+          "x": 0.9,
+          "y": 0.8,
+          "z": 0.09
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.95,
+          "g": 0.5,
+          "b": 0.15
+        }
+      },
+      "metadata": {
+        "tags": [
+          "obstacle",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 600,
+          "triangles": 48,
+          "starter": true,
+          "number": 26,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/fence_low.fbx"
+        }
+      }
+    },
+    {
+      "id": "obstacles/overhead-sign",
+      "name": "Overhead sign",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/27_overhead_sign.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -1.125,
+          "y": 0,
+          "z": -0.25
+        },
+        "max": {
+          "x": 1.125,
+          "y": 2.3,
+          "z": 0.25
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.95,
+          "g": 0.5,
+          "b": 0.15
+        }
+      },
+      "metadata": {
+        "tags": [
+          "obstacle",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 800,
+          "triangles": 120,
+          "starter": true,
+          "number": 27,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/sign_overhead.fbx"
+        }
+      }
+    },
+    {
+      "id": "pickups/star-coin",
+      "name": "Star coin",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/28_star_coin.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.45,
+          "y": 0,
+          "z": -0.083
+        },
+        "max": {
+          "x": 0.45,
+          "y": 0.9,
+          "z": 0.083
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.95,
+          "g": 0.8,
+          "b": 0.2
+        }
+      },
+      "metadata": {
+        "tags": [
+          "pickup",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 300,
+          "triangles": 130,
+          "starter": true,
+          "number": 28,
+          "meshyFbx": "Assets/MathRunner/Art/Meshy/coin_star.fbx"
+        }
+      }
+    },
+    {
+      "id": "pickups/slow-clock",
+      "name": "Slow clock",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/29_slow_clock.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.43,
+          "y": 0,
+          "z": -0.093
+        },
+        "max": {
+          "x": 0.43,
+          "y": 0.96,
+          "z": 0.093
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.95,
+          "g": 0.8,
+          "b": 0.2
+        }
+      },
+      "metadata": {
+        "tags": [
+          "pickup",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 800,
+          "triangles": 156,
+          "starter": true,
+          "number": 29
+        }
+      }
+    },
+    {
+      "id": "pickups/magnet",
+      "name": "Magnet",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/30_magnet.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.35,
+          "y": 0,
+          "z": -0.1
+        },
+        "max": {
+          "x": 0.35,
+          "y": 0.815,
+          "z": 0.1
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.95,
+          "g": 0.8,
+          "b": 0.2
+        }
+      },
+      "metadata": {
+        "tags": [
+          "pickup",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 800,
+          "triangles": 60,
+          "starter": true,
+          "number": 30
+        }
+      }
+    },
+    {
+      "id": "pickups/shield-bubble",
+      "name": "Shield bubble",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/31_shield_bubble.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.85,
+          "y": 0,
+          "z": -0.85
+        },
+        "max": {
+          "x": 0.85,
+          "y": 1.7,
+          "z": 0.85
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.95,
+          "g": 0.8,
+          "b": 0.2
+        }
+      },
+      "metadata": {
+        "tags": [
+          "pickup",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 500,
+          "triangles": 168,
+          "starter": true,
+          "number": 31
+        }
+      }
+    },
+    {
+      "id": "pickups/extra-life-heart",
+      "name": "Extra life heart",
+      "kind": "model",
+      "source": {
+        "uri": "Assets/MathRunner/Art/Models/32_extra_life_heart.glb",
+        "format": "glb"
+      },
+      "bounds": {
+        "min": {
+          "x": -0.43,
+          "y": 0,
+          "z": -0.15
+        },
+        "max": {
+          "x": 0.43,
+          "y": 0.75,
+          "z": 0.15
+        }
+      },
+      "placeholder": {
+        "shape": "box",
+        "color": {
+          "r": 0.95,
+          "g": 0.8,
+          "b": 0.2
+        }
+      },
+      "metadata": {
+        "tags": [
+          "pickup",
+          "math-runner"
+        ],
+        "properties": {
+          "pivot": "bottom-center",
+          "maxTriangles": 500,
+          "triangles": 40,
+          "starter": true,
+          "number": 32
+        }
+      }
+    }
+  ]
+}
