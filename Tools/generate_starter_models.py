@@ -234,8 +234,8 @@ def export(m):
         materials.append(dict(name=c,pbrMetallicRoughness=dict(baseColorFactor=rgb+[alpha],metallicFactor=.35 if c=='gold' else 0,roughnessFactor=.8),**({'alphaMode':'BLEND','doubleSided':True} if alpha<1 else {})))
     gltf=dict(asset={'version':'2.0','generator':'Math Runner starter mesh generator'},scene=0,scenes=[{'nodes':[0]}],nodes=[{'mesh':0,'name':m.name}],meshes=[{'primitives':prims}],materials=materials,buffers=[{'byteLength':len(binary)}],bufferViews=views,accessors=accessors)
     js=json.dumps(gltf,separators=(',',':')).encode();js+=b' '*((-len(js))%4);binary+=b'\0'*((-len(binary))%4)
-    glb=struct.pack('<III',0x46546C67,2,12+8+len(js)+8+len(binary))+struct.pack('<II',len(js),0x4E4F534A)+js+struct.pack('<II',len(binary),0x004E4942)+binary
-    (OUT/(m.name+'.glb')).write_bytes(glb)
+    # No GLB is written here any more: shared models live in Assets/Models/<group>/<name>.glb and are listed in
+    # assetra.json (see AGENTS.md). This script only makes the OBJ starters that the prefabs use.
     return dict(name=m.name,triangles=count,budget=m.budget,size_m=[round(hi[i]-lo[i],3) for i in range(3)])
 
 def preview():

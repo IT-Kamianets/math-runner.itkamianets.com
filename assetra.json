@@ -11,7 +11,7 @@
         "format": 1,
         "project": "math-runner",
         "name": "Math Runner",
-        "modelsDir": "Assets/MathRunner/Art/Models",
+        "modelsDir": "Assets/Models",
         "brief": "models.md"
       }
     }
@@ -22,7 +22,7 @@
       "name": "Runner kid",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/01_runner_kid.glb",
+        "uri": "Assets/Models/characters/runner-kid.glb",
         "format": "glb"
       },
       "bounds": {
@@ -54,7 +54,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 15000,
           "triangles": 664,
-          "starter": true,
+          "starter": false,
           "number": 1,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/runner_kid.fbx"
         }
@@ -65,7 +65,7 @@
       "name": "Runner skin teal",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/02_runner_skin_teal.glb",
+        "uri": "Assets/Models/characters/runner-skin-teal.glb",
         "format": "glb"
       },
       "bounds": {
@@ -107,7 +107,7 @@
       "name": "Runner skin red",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/03_runner_skin_red.glb",
+        "uri": "Assets/Models/characters/runner-skin-red.glb",
         "format": "glb"
       },
       "bounds": {
@@ -149,7 +149,7 @@
       "name": "Shop red",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/04_shop_red.glb",
+        "uri": "Assets/Models/buildings/shop-red.glb",
         "format": "glb"
       },
       "bounds": {
@@ -181,7 +181,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 5000,
           "triangles": 528,
-          "starter": true,
+          "starter": false,
           "number": 4,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/shop_market.fbx"
         }
@@ -192,7 +192,7 @@
       "name": "Shop teal",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/05_shop_teal.glb",
+        "uri": "Assets/Models/buildings/shop-teal.glb",
         "format": "glb"
       },
       "bounds": {
@@ -234,7 +234,7 @@
       "name": "Shop yellow",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/06_shop_yellow.glb",
+        "uri": "Assets/Models/buildings/shop-yellow.glb",
         "format": "glb"
       },
       "bounds": {
@@ -276,7 +276,7 @@
       "name": "Apartment tall",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/07_apartment_tall.glb",
+        "uri": "Assets/Models/buildings/apartment-tall.glb",
         "format": "glb"
       },
       "bounds": {
@@ -308,7 +308,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 5000,
           "triangles": 1824,
-          "starter": true,
+          "starter": false,
           "number": 7,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/apartment_tall.fbx"
         }
@@ -319,7 +319,7 @@
       "name": "Apartment wide",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/08_apartment_wide.glb",
+        "uri": "Assets/Models/buildings/apartment-wide.glb",
         "format": "glb"
       },
       "bounds": {
@@ -351,7 +351,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 5000,
           "triangles": 1248,
-          "starter": true,
+          "starter": false,
           "number": 8,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/building_wide.fbx"
         }
@@ -362,7 +362,7 @@
       "name": "Corner building",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/09_corner_building.glb",
+        "uri": "Assets/Models/buildings/corner-building.glb",
         "format": "glb"
       },
       "bounds": {
@@ -394,7 +394,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 5000,
           "triangles": 492,
-          "starter": true,
+          "starter": false,
           "number": 9,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/building_corner.fbx"
         }
@@ -405,7 +405,7 @@
       "name": "Skyline a",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/10_skyline_a.glb",
+        "uri": "Assets/Models/buildings/skyline-a.glb",
         "format": "glb"
       },
       "bounds": {
@@ -447,7 +447,7 @@
       "name": "Skyline b",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/11_skyline_b.glb",
+        "uri": "Assets/Models/buildings/skyline-b.glb",
         "format": "glb"
       },
       "bounds": {
@@ -489,7 +489,7 @@
       "name": "Street lamp",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/12_street_lamp.glb",
+        "uri": "Assets/Models/props/street-lamp.glb",
         "format": "glb"
       },
       "bounds": {
@@ -521,7 +521,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 800,
           "triangles": 96,
-          "starter": true,
+          "starter": false,
           "number": 12,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/street_lamp.fbx"
         }
@@ -532,7 +532,7 @@
       "name": "Tree round",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/13_tree_round.glb",
+        "uri": "Assets/Models/props/tree-round.glb",
         "format": "glb"
       },
       "bounds": {
@@ -564,7 +564,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 1500,
           "triangles": 200,
-          "starter": true,
+          "starter": false,
           "number": 13,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/tree_round.fbx"
         }
@@ -575,7 +575,7 @@
       "name": "Bush",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/14_bush.glb",
+        "uri": "Assets/Models/props/bush.glb",
         "format": "glb"
       },
       "bounds": {
@@ -617,7 +617,7 @@
       "name": "Bench",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/15_bench.glb",
+        "uri": "Assets/Models/props/bench.glb",
         "format": "glb"
       },
       "bounds": {
@@ -649,7 +649,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 800,
           "triangles": 144,
-          "starter": true,
+          "starter": false,
           "number": 15,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/bench.fbx"
         }
@@ -660,7 +660,7 @@
       "name": "Trash bin",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/16_trash_bin.glb",
+        "uri": "Assets/Models/props/trash-bin.glb",
         "format": "glb"
       },
       "bounds": {
@@ -702,7 +702,7 @@
       "name": "Mailbox",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/17_mailbox.glb",
+        "uri": "Assets/Models/props/mailbox.glb",
         "format": "glb"
       },
       "bounds": {
@@ -744,7 +744,7 @@
       "name": "Bus shelter",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/18_bus_shelter.glb",
+        "uri": "Assets/Models/props/bus-shelter.glb",
         "format": "glb"
       },
       "bounds": {
@@ -776,7 +776,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 1500,
           "triangles": 108,
-          "starter": true,
+          "starter": false,
           "number": 18,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/bus_shelter.fbx"
         }
@@ -787,7 +787,7 @@
       "name": "Flower planter",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/19_flower_planter.glb",
+        "uri": "Assets/Models/props/flower-planter.glb",
         "format": "glb"
       },
       "bounds": {
@@ -829,7 +829,7 @@
       "name": "Parked car",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/20_parked_car.glb",
+        "uri": "Assets/Models/props/parked-car.glb",
         "format": "glb"
       },
       "bounds": {
@@ -871,7 +871,7 @@
       "name": "Parked bus",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/21_parked_bus.glb",
+        "uri": "Assets/Models/props/parked-bus.glb",
         "format": "glb"
       },
       "bounds": {
@@ -913,7 +913,7 @@
       "name": "Hydrant",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/22_hydrant.glb",
+        "uri": "Assets/Models/props/hydrant.glb",
         "format": "glb"
       },
       "bounds": {
@@ -955,7 +955,7 @@
       "name": "Striped barrier",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/23_striped_barrier.glb",
+        "uri": "Assets/Models/obstacles/striped-barrier.glb",
         "format": "glb"
       },
       "bounds": {
@@ -987,7 +987,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 600,
           "triangles": 144,
-          "starter": true,
+          "starter": false,
           "number": 23,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/barrier_striped.fbx"
         }
@@ -998,7 +998,7 @@
       "name": "Cone cluster",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/24_cone_cluster.glb",
+        "uri": "Assets/Models/obstacles/cone-cluster.glb",
         "format": "glb"
       },
       "bounds": {
@@ -1030,7 +1030,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 500,
           "triangles": 288,
-          "starter": true,
+          "starter": false,
           "number": 24,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/cone_cluster.fbx"
         }
@@ -1041,7 +1041,7 @@
       "name": "Crate stack",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/25_crate_stack.glb",
+        "uri": "Assets/Models/obstacles/crate-stack.glb",
         "format": "glb"
       },
       "bounds": {
@@ -1073,7 +1073,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 800,
           "triangles": 216,
-          "starter": true,
+          "starter": false,
           "number": 25,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/crate_stack.fbx"
         }
@@ -1084,7 +1084,7 @@
       "name": "Low fence",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/26_low_fence.glb",
+        "uri": "Assets/Models/obstacles/low-fence.glb",
         "format": "glb"
       },
       "bounds": {
@@ -1116,7 +1116,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 600,
           "triangles": 48,
-          "starter": true,
+          "starter": false,
           "number": 26,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/fence_low.fbx"
         }
@@ -1127,7 +1127,7 @@
       "name": "Overhead sign",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/27_overhead_sign.glb",
+        "uri": "Assets/Models/obstacles/overhead-sign.glb",
         "format": "glb"
       },
       "bounds": {
@@ -1159,7 +1159,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 800,
           "triangles": 120,
-          "starter": true,
+          "starter": false,
           "number": 27,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/sign_overhead.fbx"
         }
@@ -1170,7 +1170,7 @@
       "name": "Star coin",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/28_star_coin.glb",
+        "uri": "Assets/Models/pickups/star-coin.glb",
         "format": "glb"
       },
       "bounds": {
@@ -1202,7 +1202,7 @@
           "pivot": "bottom-center",
           "maxTriangles": 300,
           "triangles": 130,
-          "starter": true,
+          "starter": false,
           "number": 28,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/coin_star.fbx"
         }
@@ -1213,7 +1213,7 @@
       "name": "Slow clock",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/29_slow_clock.glb",
+        "uri": "Assets/Models/pickups/slow-clock.glb",
         "format": "glb"
       },
       "bounds": {
@@ -1255,7 +1255,7 @@
       "name": "Magnet",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/30_magnet.glb",
+        "uri": "Assets/Models/pickups/magnet.glb",
         "format": "glb"
       },
       "bounds": {
@@ -1297,7 +1297,7 @@
       "name": "Shield bubble",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/31_shield_bubble.glb",
+        "uri": "Assets/Models/pickups/shield-bubble.glb",
         "format": "glb"
       },
       "bounds": {
@@ -1339,7 +1339,7 @@
       "name": "Extra life heart",
       "kind": "model",
       "source": {
-        "uri": "Assets/MathRunner/Art/Models/32_extra_life_heart.glb",
+        "uri": "Assets/Models/pickups/extra-life-heart.glb",
         "format": "glb"
       },
       "bounds": {

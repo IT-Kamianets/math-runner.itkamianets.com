@@ -6,8 +6,10 @@ answer-board backing, and ground-fill meshes. Generated locally with
 
 - **OBJ + palette.mtl**: native Unity import, flat normals, URP material conversion
   handled by `StarterModelImporter`. Keep the MTL beside the OBJs.
-- **GLB**: portable colored meshes, meters, Y up. Unity needs a glTF importer to
-  use these directly; use the OBJ versions in this project.
+- **GLB**: not kept here any more. Every shared model is one GLB at
+  `Assets/Models/<group>/<name>.glb` (the id `props/bench` is `Assets/Models/props/bench.glb`) and is listed in
+  `assetra.json`. The Meshy models there come from the FBX files in `Art/Meshy`; the rest are the generated starters.
+  Use the OBJ versions here for the starter prefabs.
 - **catalog.json**: actual triangle counts, budgets, and bounding dimensions.
 - Every mesh has a bottom-centered pivot. Buildings share a 6 m frontage.
 - Runner variants are 1.8 m tall, static A-pose meshes with separate parts.

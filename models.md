@@ -2,7 +2,7 @@
 
 Style for every Meshy model: stylized low-poly cartoon, bright saturated colors, clean flat-ish textures, same look as one set. Add this phrase to every prompt: "stylized low-poly cartoon, bright colors, game-ready, clean topology".
 
-Export format: FBX or GLB. Y up, 1 unit = 1 meter, pivot at the bottom center.
+Export format: FBX or GLB. Y up, 1 unit = 1 meter, pivot at the bottom center. A finished model is kept as one GLB at `Assets/Models/<group>/<name>.glb` (the asset id, see `assetra.json`); the FBX it came from stays in `Assets/MathRunner/Art/Meshy`.
 
 ## 1. Generate in Meshy
 
