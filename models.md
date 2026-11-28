@@ -1,5 +1,11 @@
 # Math Runner: 3D models
 
+Every model slot is listed in [`assetra.json`](assetra.json): its id, the size it must fill (`bounds`), and a `production` brief (one-line `brief` to use as the prompt, triangle `budget`). Make models the way the framework docs describe ([How a model is made](https://3d.itkamianets.com/docs/architecture)): reference image, 3D generator, Blender, `Assets/Models/<group>/<name>.glb`, Assetra. Working files go in `Art/Models/<group>/<name>/`. The tables below are the original plan; `assetra.json` is the current list.
+
+With [3d-model-tools](https://github.com/IT-Kamianets/3d-model-tools): `itkp-models status` shows where each slot stands, `itkp-models prompt <id>` prints its prompts, `itkp-models optimize <id> --input <file>` fits a generated model to its slot, and `itkp-models check` checks every finished model.
+
+All 32 slots have a GLB. On 2026-11-16 `itkp-models check` failed 13 of them: most of the Meshy models are over their triangle budget (the barrier has 2,996 against 600), and several are bigger than their slot (the round tree is 5.1 m deep against 1.9 m). Run each one again through `itkp-models optimize <id> --input <its Meshy FBX>`; the FBX path is in the slot's `metadata.properties.meshyFbx`. If a slot's size is what is wrong, fix its `bounds` instead.
+
 Style for every Meshy model: stylized low-poly cartoon, bright saturated colors, clean flat-ish textures, same look as one set. Add this phrase to every prompt: "stylized low-poly cartoon, bright colors, game-ready, clean topology".
 
 Export format: FBX or GLB. Y up, 1 unit = 1 meter, pivot at the bottom center. A finished model is kept as one GLB at `Assets/Models/<group>/<name>.glb` (the asset id, see `assetra.json`); the FBX it came from stays in `Assets/MathRunner/Art/Meshy`.

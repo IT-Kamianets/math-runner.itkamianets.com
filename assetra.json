@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "libraryId": "math-runner",
   "units": "meters",
   "metadata": {
@@ -15,6 +15,10 @@
         "brief": "models.md"
       }
     }
+  },
+  "production": {
+    "style": "stylized low-poly cartoon, bright saturated colors, clean flat-ish textures, game-ready, clean topology",
+    "workDir": "Art/Models"
   },
   "assets": [
     {
@@ -58,6 +62,12 @@
           "number": 1,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/runner_kid.fbx"
         }
+      },
+      "production": {
+        "brief": "cartoon girl runner, brown hair in two pigtails, grey sweater, blue jeans, sneakers, A-pose",
+        "budget": 15000,
+        "textureSize": 2048,
+        "rigged": true
       }
     },
     {
@@ -100,6 +110,11 @@
           "starter": true,
           "number": 2
         }
+      },
+      "production": {
+        "brief": "the runner girl in a teal tracksuit outfit, A-pose",
+        "budget": 15000,
+        "rigged": true
       }
     },
     {
@@ -142,6 +157,11 @@
           "starter": true,
           "number": 3
         }
+      },
+      "production": {
+        "brief": "the runner girl in a red hoodie outfit, A-pose",
+        "budget": 15000,
+        "rigged": true
       }
     },
     {
@@ -185,6 +205,10 @@
           "number": 4,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/shop_market.fbx"
         }
+      },
+      "production": {
+        "brief": "small town shop building, red and white striped awning, large ground-floor windows, two upper floors",
+        "budget": 5000
       }
     },
     {
@@ -227,6 +251,10 @@
           "starter": true,
           "number": 5
         }
+      },
+      "production": {
+        "brief": "small town shop building, teal awning, large ground-floor windows, two upper floors",
+        "budget": 5000
       }
     },
     {
@@ -269,6 +297,10 @@
           "starter": true,
           "number": 6
         }
+      },
+      "production": {
+        "brief": "small town shop building, yellow awning, large ground-floor windows, two upper floors",
+        "budget": 5000
       }
     },
     {
@@ -312,6 +344,10 @@
           "number": 7,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/apartment_tall.fbx"
         }
+      },
+      "production": {
+        "brief": "tall apartment block, five to six floors, balconies",
+        "budget": 5000
       }
     },
     {
@@ -355,6 +391,10 @@
           "number": 8,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/building_wide.fbx"
         }
+      },
+      "production": {
+        "brief": "wide apartment block with rooftop details",
+        "budget": 5000
       }
     },
     {
@@ -398,6 +438,10 @@
           "number": 9,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/building_corner.fbx"
         }
+      },
+      "production": {
+        "brief": "corner building that breaks up a row of houses",
+        "budget": 5000
       }
     },
     {
@@ -440,6 +484,10 @@
           "starter": true,
           "number": 10
         }
+      },
+      "production": {
+        "brief": "very simple distant city building silhouette",
+        "budget": 1500
       }
     },
     {
@@ -482,6 +530,10 @@
           "starter": true,
           "number": 11
         }
+      },
+      "production": {
+        "brief": "very simple distant tall city building silhouette",
+        "budget": 1500
       }
     },
     {
@@ -525,6 +577,10 @@
           "number": 12,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/street_lamp.fbx"
         }
+      },
+      "production": {
+        "brief": "street lamp with an arm reaching over the road",
+        "budget": 800
       }
     },
     {
@@ -568,6 +624,10 @@
           "number": 13,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/tree_round.fbx"
         }
+      },
+      "production": {
+        "brief": "round leafy street tree",
+        "budget": 1500
       }
     },
     {
@@ -610,6 +670,10 @@
           "starter": true,
           "number": 14
         }
+      },
+      "production": {
+        "brief": "small round bush",
+        "budget": 800
       }
     },
     {
@@ -653,6 +717,10 @@
           "number": 15,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/bench.fbx"
         }
+      },
+      "production": {
+        "brief": "park bench, wooden slats, metal legs",
+        "budget": 800
       }
     },
     {
@@ -695,6 +763,10 @@
           "starter": true,
           "number": 16
         }
+      },
+      "production": {
+        "brief": "street trash bin",
+        "budget": 500
       }
     },
     {
@@ -737,6 +809,10 @@
           "starter": true,
           "number": 17
         }
+      },
+      "production": {
+        "brief": "street mailbox on a post",
+        "budget": 500
       }
     },
     {
@@ -780,6 +856,10 @@
           "number": 18,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/bus_shelter.fbx"
         }
+      },
+      "production": {
+        "brief": "bus stop shelter with a glass back and a roof",
+        "budget": 1500
       }
     },
     {
@@ -822,6 +902,10 @@
           "starter": true,
           "number": 19
         }
+      },
+      "production": {
+        "brief": "rectangular planter box with flowers",
+        "budget": 600
       }
     },
     {
@@ -864,6 +948,10 @@
           "starter": true,
           "number": 20
         }
+      },
+      "production": {
+        "brief": "small parked hatchback car",
+        "budget": 2000
       }
     },
     {
@@ -906,6 +994,10 @@
           "starter": true,
           "number": 21
         }
+      },
+      "production": {
+        "brief": "parked city bus",
+        "budget": 2500
       }
     },
     {
@@ -948,6 +1040,10 @@
           "starter": true,
           "number": 22
         }
+      },
+      "production": {
+        "brief": "red fire hydrant",
+        "budget": 400
       }
     },
     {
@@ -991,6 +1087,10 @@
           "number": 23,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/barrier_striped.fbx"
         }
+      },
+      "production": {
+        "brief": "orange and white striped road barrier",
+        "budget": 600
       }
     },
     {
@@ -1034,6 +1134,10 @@
           "number": 24,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/cone_cluster.fbx"
         }
+      },
+      "production": {
+        "brief": "cluster of three orange traffic cones",
+        "budget": 500
       }
     },
     {
@@ -1077,6 +1181,10 @@
           "number": 25,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/crate_stack.fbx"
         }
+      },
+      "production": {
+        "brief": "stack of wooden crates",
+        "budget": 800
       }
     },
     {
@@ -1120,6 +1228,10 @@
           "number": 26,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/fence_low.fbx"
         }
+      },
+      "production": {
+        "brief": "low wooden fence the runner jumps over",
+        "budget": 600
       }
     },
     {
@@ -1163,6 +1275,10 @@
           "number": 27,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/sign_overhead.fbx"
         }
+      },
+      "production": {
+        "brief": "hanging sign on two posts the runner slides under",
+        "budget": 800
       }
     },
     {
@@ -1206,6 +1322,10 @@
           "number": 28,
           "meshyFbx": "Assets/MathRunner/Art/Meshy/coin_star.fbx"
         }
+      },
+      "production": {
+        "brief": "large thick gold coin with a star emblem",
+        "budget": 300
       }
     },
     {
@@ -1248,6 +1368,10 @@
           "starter": true,
           "number": 29
         }
+      },
+      "production": {
+        "brief": "round alarm clock pickup",
+        "budget": 800
       }
     },
     {
@@ -1290,6 +1414,10 @@
           "starter": true,
           "number": 30
         }
+      },
+      "production": {
+        "brief": "red horseshoe magnet with silver tips",
+        "budget": 800
       }
     },
     {
@@ -1332,6 +1460,10 @@
           "starter": true,
           "number": 31
         }
+      },
+      "production": {
+        "brief": "glowing translucent shield bubble",
+        "budget": 500
       }
     },
     {
@@ -1374,6 +1506,10 @@
           "starter": true,
           "number": 32
         }
+      },
+      "production": {
+        "brief": "shiny red heart pickup",
+        "budget": 500
       }
     }
   ]

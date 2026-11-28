@@ -88,6 +88,9 @@ namespace MathRunner.Game
         private QuestionGenerator _questions;
         private int _tierIndex;
         private int _best;
+        private const string BestKey = "MathRunner.Best";
+        private float _prevZ;
+        private Action<ITKamianets.Engine.Input.InputScheme> _onSchemeChanged;
 
         private float _z, _x, _y, _vy, _slideLeft, _invulnerableLeft, _countdownLeft, _shake, _clock;
         private bool _grounded = true;
@@ -126,7 +129,9 @@ namespace MathRunner.Game
             new GameObject("Updater").AddComponent<UpdateChecker>();
 
             _fsm.Changed += OnStateChanged;
-            EngineInput.Default.SchemeChanged += _ => RefreshHint();
+            _best = PlayerPrefs.GetInt(BestKey, 0);
+            _onSchemeChanged = _ => RefreshHint();
+            EngineInput.Default.SchemeChanged += _onSchemeChanged;
             _hud.SetTouchControls(Application.isMobilePlatform);
             RefreshHint();
             ResetWorld();
@@ -137,6 +142,7 @@ namespace MathRunner.Game
         private void OnDestroy()
         {
             Time.timeScale = 1f;
+            if (_onSchemeChanged != null) EngineInput.Default.SchemeChanged -= _onSchemeChanged;
         }
 
         // ---- Frame loop ------------------------------------------------------------------
@@ -199,6 +205,7 @@ namespace MathRunner.Game
         {
             var speed = _speedCurve.SpeedAt(_z);
             var step = speed * dt;
+            _prevZ = _z;
             _z += step;
             _session.AddDistance(step);
 
@@ -327,7 +334,6 @@ namespace MathRunner.Game
             var seed = Environment.TickCount;
             _session = new RunSession(3);
             _session.Died += OnDied;
-            _session.AnswerResolved += OnAnswerResolved;
             _planner = new TrackPlanner(seed);
             _questions = new QuestionGenerator(seed + 1);
             _countdownLeft = 3f;
@@ -347,6 +353,7 @@ namespace MathRunner.Game
             _environment.Clear();
             _lane.Reset();
             _z = 0f;
+            _prevZ = 0f;
             _x = 0f;
             _y = 0f;
             _vy = 0f;
@@ -382,7 +389,12 @@ namespace MathRunner.Game
                 case GameState.GameOver:
                     _fallLeft = 0f;
                     PlayRunner("Fall", 0.05f);
-                    _best = Mathf.Max(_best, _session.Score);
+                    if (_session.Score > _best)
+                    {
+                        _best = _session.Score;
+                        PlayerPrefs.SetInt(BestKey, _best);
+                        PlayerPrefs.Save();
+                    }
                     _hud.ShowGameOver(_session.Score, _best, _session.CorrectCount, _session.WrongCount,
                         _session.Coins, Mathf.RoundToInt(_session.Distance));
                     break;
@@ -390,11 +402,6 @@ namespace MathRunner.Game
         }
 
         private void OnDied() => _fsm.TryMoveTo(GameState.GameOver);
-
-        private void OnAnswerResolved(AnswerResult result)
-        {
-            // The popup text is set by CheckGates, which knows the points gained.
-        }
 
         private void RefreshHud(bool force = false)
         {
@@ -490,7 +497,8 @@ namespace MathRunner.Game
                 if (s.Kind == SpawnKind.Coins)
                 {
                     s.Go.transform.rotation = Quaternion.Euler(0f, _clock * 220f, 0f);
-                    if (Mathf.Abs(_z - s.Z) < 0.6f && Mathf.Abs(_x - s.X) < 0.9f)
+                    // Swept over this frame's step, so a slow frame cannot jump over a coin.
+                    if (s.Z >= _prevZ - 0.6f && s.Z <= _z + 0.6f && Mathf.Abs(_x - s.X) < 0.9f)
                     {
                         s.Done = true;
                         _session.CollectCoin();
