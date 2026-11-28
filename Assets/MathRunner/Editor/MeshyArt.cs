@@ -87,8 +87,9 @@ public sealed class MeshyArt : AssetPostprocessor
             var bar = name.LastIndexOf('|');
             if (bar >= 0) name = name.Substring(bar + 1);
             clip.name = name;
-            clip.loopTime = true;
-            clip.loopPose = true;
+            var loops = name == "Running" || name == "Walking" || name == "Agree_Gesture";
+            clip.loopTime = loops;
+            clip.loopPose = loops;
         }
 
         importer.clipAnimations = clips;
@@ -165,12 +166,17 @@ public sealed class MeshyArt : AssetPostprocessor
         if (controller == null) controller = AnimatorController.CreateAnimatorControllerAtPath(path);
 
         var machine = controller.layers[0].stateMachine;
-        foreach (var name in new[] { "Running", "Walking" })
+        // State name (what GameController plays) -> clip name in runner_kid.fbx.
+        foreach (var (name, clipName) in new[]
+                 {
+                     ("Running", "Running"), ("Walking", "Walking"), ("Jump", "Run_and_Jump"),
+                     ("Fall", "falling_down"), ("Celebrate", "Agree_Gesture"),
+                 })
         {
             AnimationClip clip = null;
             foreach (var asset in AssetDatabase.LoadAllAssetsAtPath(Root + "runner_kid.fbx"))
-                if (asset is AnimationClip c && c.name == name && !c.name.StartsWith("__preview")) clip = c;
-            if (clip == null) { Debug.LogWarning("Runner clip missing: " + name); continue; }
+                if (asset is AnimationClip c && c.name == clipName && !c.name.StartsWith("__preview")) clip = c;
+            if (clip == null) { Debug.LogWarning("Runner clip missing: " + clipName); continue; }
 
             AnimatorState state = null;
             foreach (var existing in machine.states)

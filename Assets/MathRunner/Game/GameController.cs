@@ -78,6 +78,10 @@ namespace MathRunner.Game
         private Transform _runner;
         private Transform _model;
         private Renderer[] _runnerRenderers;
+        private Animator _animator;
+        private string _animState;
+        private float _fallLeft;
+        private float _facing = 180f; // extra yaw: 180 = faces the camera (menu), 0 = runs away from it
 
         private RunSession _session;
         private TrackPlanner _planner;
@@ -126,6 +130,7 @@ namespace MathRunner.Game
             _hud.SetTouchControls(Application.isMobilePlatform);
             RefreshHint();
             ResetWorld();
+            PlayRunner("Celebrate", 0f);
             _hud.ShowMenu(_tierIndex);
         }
 
@@ -203,6 +208,7 @@ namespace MathRunner.Game
                 _vy = JumpVelocity;
                 _grounded = false;
                 _slideLeft = 0f;
+                PlayRunner("Jump", 0.08f, JumpClipLength / (2f * JumpVelocity / -Gravity));
             }
 
             if (slide)
@@ -220,6 +226,7 @@ namespace MathRunner.Game
                     _y = 0f;
                     _vy = 0f;
                     _grounded = true;
+                    if (_fallLeft <= 0f) PlayRunner("Running", 0.1f);
                 }
             }
 
@@ -331,6 +338,7 @@ namespace MathRunner.Game
 
         private void ResetWorld()
         {
+            _fallLeft = 0f;
             foreach (var item in _spawned)
                 if (item.Go != null) Destroy(item.Go);
             _spawned.Clear();
@@ -358,9 +366,11 @@ namespace MathRunner.Game
             {
                 case GameState.Menu:
                     ResetWorld();
+                    PlayRunner("Celebrate", 0.2f);
                     _hud.ShowMenu(_tierIndex);
                     break;
                 case GameState.Countdown:
+                    PlayRunner("Running", 0.2f);
                     _hud.ShowCountdown(3);
                     break;
                 case GameState.Running:
@@ -370,6 +380,8 @@ namespace MathRunner.Game
                     _hud.ShowPaused();
                     break;
                 case GameState.GameOver:
+                    _fallLeft = 0f;
+                    PlayRunner("Fall", 0.05f);
                     _best = Mathf.Max(_best, _session.Score);
                     _hud.ShowGameOver(_session.Score, _best, _session.CorrectCount, _session.WrongCount,
                         _session.Coins, Mathf.RoundToInt(_session.Distance));
@@ -503,6 +515,8 @@ namespace MathRunner.Game
                 _session.HitObstacle();
                 _invulnerableLeft = InvulnerableTime;
                 _shake = 0.35f;
+                _fallLeft = 0.9f;
+                PlayRunner("Fall", 0.05f, FallClipLength / 0.9f);
                 _hud.ShowFeedback("OUCH!", false);
             }
         }
@@ -551,13 +565,40 @@ namespace MathRunner.Game
             foreach (var controller in model.GetComponentsInChildren<CharacterController>()) controller.enabled = false;
             foreach (var collider in model.GetComponentsInChildren<Collider>()) collider.enabled = false;
             _model = model.transform;
-            _model.localRotation = Quaternion.Euler(0f, runnerYaw, 0f);
+            _model.localRotation = Quaternion.Euler(0f, runnerYaw + _facing, 0f);
             _runnerRenderers = model.GetComponentsInChildren<Renderer>();
+            _animator = model.GetComponentInChildren<Animator>();
+            _animState = null;
+        }
+
+        // Clip lengths (seconds) of Run_and_Jump and falling_down in runner_kid.fbx, used to fit them to the game's timing.
+        private const float JumpClipLength = 56f / 24f;
+        private const float FallClipLength = 54f / 24f;
+
+        private void PlayRunner(string state, float fade, float speed = 1f)
+        {
+            if (_animator == null) return;
+            _animator.speed = speed;
+            if (_animState == state) return;
+            _animState = state;
+            _animator.CrossFadeInFixedTime(state, fade);
+        }
+
+        private void TickRunnerAnimation(float dt)
+        {
+            if (_animator == null) return;
+            if (_fallLeft > 0f)
+            {
+                _fallLeft -= dt;
+                if (_fallLeft <= 0f) PlayRunner(_grounded ? "Running" : "Jump", 0.15f, _grounded ? 1f : JumpClipLength / (2f * JumpVelocity / -Gravity));
+            }
         }
 
         private void UpdateRunnerVisual()
         {
             if (_runner == null) return;
+            TickRunnerAnimation(Time.deltaTime);
+            _facing = Mathf.MoveTowards(_facing, _fsm.State == GameState.Menu ? 180f : 0f, 360f * Time.unscaledDeltaTime);
             var running = _fsm.State == GameState.Running || _fsm.State == GameState.Countdown;
             var bob = _grounded && _fsm.State == GameState.Running ? Mathf.Abs(Mathf.Sin(_clock * 13f)) * 0.07f : 0f;
             _runner.position = new Vector3(_x, _y + bob, _z);
@@ -567,7 +608,7 @@ namespace MathRunner.Game
             var lean = Mathf.Clamp((_x - targetX) * 14f, -18f, 18f);
             var sliding = _slideLeft > 0f;
             var pitch = sliding ? 28f : (running ? 7f : 0f);
-            _model.localRotation = Quaternion.Euler(pitch, runnerYaw, lean);
+            _model.localRotation = Quaternion.Euler(pitch, runnerYaw + _facing, lean);
             _model.localScale = new Vector3(1f, sliding ? 0.55f : 1f, 1f);
 
             if (_runnerRenderers == null) return;
