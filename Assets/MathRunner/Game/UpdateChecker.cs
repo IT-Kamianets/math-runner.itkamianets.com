@@ -1,22 +1,16 @@
 using System;
-using System.Collections;
-using System.Diagnostics;
-using System.IO;
-using System.Security.Cryptography;
-using MathRunner.Core.Update;
+using ITKamianets.Engine.Update;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
-using Debug = UnityEngine.Debug;
 
 namespace MathRunner.Game
 {
     /// <summary>
-    /// Looks for a newer release on GitHub when the game starts and offers it. On Windows the banner downloads
-    /// and runs the installer; on Linux and macOS it opens the release page, since those installs are done by
-    /// hand. The editor skips the check. The installer is only taken from this repository's releases and, when
-    /// GitHub reports a SHA-256 for it, only run if the hash matches.
+    /// Looks for a newer release on GitHub when the game starts and offers it in a banner. The check, the download and the
+    /// install are the engine's <see cref="AutoUpdater"/> (3d-unity-update): on Windows the installer is taken only from this
+    /// repository's releases, checked against the size and SHA-256 GitHub reports, and run; elsewhere the release page opens.
+    /// The editor skips the check.
     /// </summary>
     public sealed class UpdateChecker : MonoBehaviour
     {
@@ -25,57 +19,27 @@ namespace MathRunner.Game
         private static readonly Color Panel = new Color(0.05f, 0.09f, 0.16f, 0.92f);
         private static readonly Color Accent = new Color(0.16f, 0.82f, 0.95f, 1f);
 
-        [Serializable] private class ReleaseAsset { public string name; public string browser_download_url; public string digest; }
-        [Serializable] private class ReleaseInfo { public string tag_name; public string html_url; public bool draft; public bool prerelease; public ReleaseAsset[] assets; }
-
+        private AutoUpdater _updater;
         private GameObject _banner;
         private TextMeshProUGUI _message;
         private Button _install, _later;
-        private ReleaseAsset _asset;
-        private string _releasePage;
-        private bool _busy;
 
         private void Start()
         {
 #if UNITY_STANDALONE && !UNITY_EDITOR
             if (PlayerPrefs.GetInt("MathRunner.NoUpdateCheck", 0) == 1) return;
-            StartCoroutine(Check());
+            _updater = gameObject.AddComponent<AutoUpdater>();
+            _updater.Repo = Repository;
+            _updater.WindowsAssetSuffix = InstallerName;
+            _updater.UserAgent = "MathRunner-Updater";
+            _updater.Changed += OnUpdaterChanged;
+            _updater.Check();
 #endif
         }
 
-        private IEnumerator Check()
+        private void OnDestroy()
         {
-            using (var request = UnityWebRequest.Get($"https://api.github.com/repos/{Repository}/releases/latest"))
-            {
-                request.SetRequestHeader("Accept", "application/vnd.github+json");
-                request.timeout = 10;
-                yield return request.SendWebRequest();
-                if (request.result != UnityWebRequest.Result.Success) yield break; // offline: say nothing
-
-                ReleaseInfo release;
-                try { release = JsonUtility.FromJson<ReleaseInfo>(request.downloadHandler.text); }
-                catch (Exception) { yield break; }
-
-                if (release == null || release.draft || release.prerelease || release.assets == null) yield break;
-                if (!ReleaseVersion.IsNewer(Application.version, release.tag_name)) yield break;
-
-#if UNITY_STANDALONE_WIN
-                foreach (var asset in release.assets)
-                {
-                    if (asset.name != InstallerName) continue;
-                    if (!IsTrustedUrl(asset.browser_download_url)) yield break;
-                    _asset = asset;
-                    break;
-                }
-
-                if (_asset == null) yield break;
-#else
-                if (string.IsNullOrEmpty(release.html_url) ||
-                    !release.html_url.StartsWith($"https://github.com/{Repository}/releases/", StringComparison.Ordinal)) yield break;
-                _releasePage = release.html_url;
-#endif
-                ShowBanner($"Version {release.tag_name.TrimStart('v', 'V')} is available.");
-            }
+            if (_updater != null) _updater.Changed -= OnUpdaterChanged;
         }
 
 #if UNITY_STANDALONE_WIN
@@ -84,87 +48,42 @@ namespace MathRunner.Game
         private const string InstallLabel = "Download";
 #endif
 
-        private static bool IsTrustedUrl(string url)
+        private void OnUpdaterChanged()
         {
-            return !string.IsNullOrEmpty(url) &&
-                   url.StartsWith($"https://github.com/{Repository}/releases/download/", StringComparison.Ordinal);
+            switch (_updater.State)
+            {
+                case UpdateState.Available:
+                    if (_banner == null) ShowBanner($"Version {_updater.Latest.Version} is available.");
+                    else SetButtons(true, "Version " + _updater.Latest.Version + " is available.");
+                    break;
+                case UpdateState.Downloading:
+                    if (_message != null) _message.text = $"Downloading the update... {Mathf.RoundToInt(_updater.Progress * 100f)}%";
+                    break;
+                case UpdateState.Installing:
+                    if (_message != null) _message.text = "Installing the update. The game will restart.";
+                    break;
+                case UpdateState.Failed:
+                    // Offline before anything was offered says nothing; a failed download says so in the banner.
+                    if (_banner != null) SetButtons(true, "The update was not installed. You can download it from the website.");
+                    break;
+            }
         }
 
-        private IEnumerator Install()
+        private void Install()
         {
+            if (_updater == null || _updater.State != UpdateState.Available) return;
+            SetButtons(false, "Starting the update...");
+            _updater.Install();
 #if !UNITY_STANDALONE_WIN
-            Application.OpenURL(_releasePage);
             Destroy(_banner);
-            yield break;
 #endif
-            _busy = true;
-            _install.interactable = false;
-            _later.interactable = false;
-            var path = Path.Combine(Application.temporaryCachePath, InstallerName);
-            if (File.Exists(path)) File.Delete(path);
-
-            using (var request = new UnityWebRequest(_asset.browser_download_url, UnityWebRequest.kHttpVerbGET))
-            {
-                request.downloadHandler = new DownloadHandlerFile(path) { removeFileOnAbort = true };
-                var operation = request.SendWebRequest();
-                while (!operation.isDone)
-                {
-                    _message.text = $"Downloading the update... {Mathf.RoundToInt(request.downloadProgress * 100f)}%";
-                    yield return null;
-                }
-
-                if (request.result != UnityWebRequest.Result.Success)
-                {
-                    Fail("Could not download the update. Try again later.");
-                    yield break;
-                }
-            }
-
-            if (!HashMatches(path, _asset.digest))
-            {
-                File.Delete(path);
-                Fail("The downloaded update did not match its checksum, so it was not installed.");
-                yield break;
-            }
-
-            _message.text = "Installing the update. The game will restart.";
-            yield return null;
-            try
-            {
-                // Windows asks for permission (the installer needs administrator rights), then the installer
-                // replaces the game and starts it again.
-                Process.Start(new ProcessStartInfo(path, "/SILENT /SUPPRESSMSGBOXES /NORESTART /CLOSEAPPLICATIONS")
-                {
-                    UseShellExecute = true,
-                });
-            }
-            catch (Exception e)
-            {
-                Debug.LogWarning("Update was not started: " + e.Message);
-                Fail("The update was not started. You can download it from the website.");
-                yield break;
-            }
-
-            Application.Quit();
         }
 
-        private static bool HashMatches(string path, string digest)
+        private void SetButtons(bool enabled, string text)
         {
-            if (string.IsNullOrEmpty(digest) || !digest.StartsWith("sha256:", StringComparison.OrdinalIgnoreCase)) return true;
-            using (var stream = File.OpenRead(path))
-            using (var sha = SHA256.Create())
-            {
-                var actual = BitConverter.ToString(sha.ComputeHash(stream)).Replace("-", "");
-                return string.Equals(actual, digest.Substring(7), StringComparison.OrdinalIgnoreCase);
-            }
-        }
-
-        private void Fail(string text)
-        {
-            _busy = false;
-            _message.text = text;
-            _later.interactable = true;
-            _install.interactable = true;
+            if (_message != null) _message.text = text;
+            if (_install != null) _install.interactable = enabled;
+            if (_later != null) _later.interactable = enabled;
         }
 
         // ---- Banner ----------------------------------------------------------------------------
@@ -197,9 +116,9 @@ namespace MathRunner.Game
             _message.rectTransform.offsetMax = new Vector2(-350f, 0f);
 
             _install = MakeButton(rect, InstallLabel, new Vector2(-132f, 0f), new Vector2(190f, 56f), Accent, Color.black,
-                () => { if (!_busy) StartCoroutine(Install()); });
+                Install);
             _later = MakeButton(rect, "Later", new Vector2(-28f, 0f), new Vector2(90f, 56f), new Color(0.18f, 0.25f, 0.38f), Color.white,
-                () => { if (!_busy) Destroy(_banner); });
+                () => Destroy(_banner));
         }
 
         private static TextMeshProUGUI Label(RectTransform parent, string text, float size, TextAlignmentOptions align)

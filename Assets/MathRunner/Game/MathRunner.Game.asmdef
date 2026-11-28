@@ -5,6 +5,7 @@
         "MathRunner.Core",
         "ITKamianets.Engine.Core",
         "ITKamianets.Engine.Input",
+        "ITKamianets.Engine.Update",
         "Unity.InputSystem",
         "Unity.TextMeshPro",
         "UnityEngine.UI"
